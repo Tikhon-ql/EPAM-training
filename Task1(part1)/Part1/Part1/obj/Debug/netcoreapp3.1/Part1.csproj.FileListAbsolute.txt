@@ -2,3 +2,12 @@ D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1
 D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.AssemblyInfoInputs.cache
 D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.AssemblyInfo.cs
 D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.csproj.CoreCompileInputs.cache
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.exe
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.deps.json
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.runtimeconfig.json
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.runtimeconfig.dev.json
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.dll
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\bin\Debug\netcoreapp3.1\Part1.pdb
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.dll
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.pdb
+D:\Тихон\Git\EPAM-training\Task1(part1)\Part1\Part1\obj\Debug\netcoreapp3.1\Part1.genruntimeconfig.cache

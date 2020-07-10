@@ -11,7 +11,7 @@ namespace Part1
         /// <summary>
         /// Вычисление НОД с помощью алгоритма Евклида
         /// </summary>
-        static int EvclideNod(int arg1, int arg2)
+        public static int EvclideNod(int arg1, int arg2)
         {
             while (arg1 > 0 && arg2 > 0)
             {
@@ -28,13 +28,13 @@ namespace Part1
             return arg1 + arg2;
         }
         // перегрузка метода нахождения НОД с помощью алгоритма Евклида
-        static int EvclideNod(int arg1, int arg2, int arg3) => EvclideNod(EvclideNod(arg1,arg2),arg3);
+        public static int EvclideNod(int arg1, int arg2, int arg3) => EvclideNod(EvclideNod(arg1,arg2),arg3);
 
-        static int EvclideNod(int arg1, int arg2, int arg3,int arg4)
+        public static int EvclideNod(int arg1, int arg2, int arg3,int arg4)
         {
             return EvclideNod(EvclideNod(EvclideNod(arg1,arg2),arg3),arg4);
         }
-        static int EvclideNod(int arg1, int arg2, int arg3, int arg4,int arg5)
+        public static int EvclideNod(int arg1, int arg2, int arg3, int arg4,int arg5)
         {
             int firstNod = EvclideNod(arg1, arg2);
             int secondNod = EvclideNod(firstNod,arg3);
@@ -44,7 +44,7 @@ namespace Part1
         /// <summary>
         /// Вычисление НОД с помощью алгоритма Стейна
         /// </summary>
-        static int SteinNod(int arg1,int arg2,out long time)
+        public static int SteinNod(int arg1,int arg2,out long time)
         {
             // Для замера времени работы метода
             Stopwatch stopwatch = new Stopwatch();
@@ -106,7 +106,7 @@ namespace Part1
         /// Перегразка метода нахождения НОД с помощью алгоритма Евклида с дополнительным выходным параметром для получения времени работы метода
         /// </summary>
         /// <returns></returns>
-        static int EvclideNod(int arg1, int arg2, out long time)
+        public static int EvclideNod(int arg1, int arg2, out long time)
         {
             // Для замера времени работы метода
             Stopwatch stopwatch = new Stopwatch();
@@ -127,13 +127,14 @@ namespace Part1
             time = stopwatch.ElapsedMilliseconds;
             return arg1 + arg2;
         }
-        static Random rnd = new Random();
+       
         /// <summary>
         /// Метод для подготовки данных о времени работы методов для гистограммы
         /// </summary>
         /// <returns></returns>
-        static Pair<long,long> ForBarCharts()
+        public static Pair<long,long> ForBarCharts()
         {
+            Random rnd = new Random();
             int arg1 = rnd.Next(0,100);
             int arg2 = rnd.Next(0, 100);
             long evclideTime = 0;
