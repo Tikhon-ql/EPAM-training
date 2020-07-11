@@ -13,7 +13,15 @@ namespace Figures.Models
         {
             Side = s;
         }
+        // сторона квадрата
         public double Side { get; set; } = 0;
+
+        public override bool Equals(object obj)
+        {
+            return obj is Square square &&
+                   base.Equals(obj) &&
+                   Side == square.Side;
+        }
 
         public override int GetHashCode()
         {

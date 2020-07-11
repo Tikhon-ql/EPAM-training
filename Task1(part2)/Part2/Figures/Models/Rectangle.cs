@@ -14,9 +14,18 @@ namespace Figures.Models
             Height = h;
             Width = w;
         }
-
+        // длинна квадрата
         public double Height { get; set; } = 0;
+        // ширина квадрата
         public double Width { get; set; } = 0;
+
+        public override bool Equals(object obj)
+        {
+            return obj is Rectangle rectangle &&
+                   base.Equals(obj) &&
+                   Height == rectangle.Height &&
+                   Width == rectangle.Width;
+        }
 
         public override int GetHashCode()
         {

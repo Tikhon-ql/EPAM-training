@@ -29,11 +29,6 @@ namespace Figures.Models
             X = x;
             Y = y;
         }
-
-        //public static Point Parse(string str)
-        //{
-
-        //}
         public override bool Equals(object obj)
         {
             if (X == ((Point)obj).X && Y == ((Point)obj).Y)
