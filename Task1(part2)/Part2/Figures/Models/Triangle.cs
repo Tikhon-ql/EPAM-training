@@ -44,5 +44,14 @@ namespace Figures.Models
         {
             return "Triangle;" + FirstSide.ToString() + ";" + SecondSide.ToString() + ";" + ThirdSide.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Triangle triangle &&
+                   base.Equals(obj) &&
+                   FirstSide == triangle.FirstSide &&
+                   SecondSide == triangle.SecondSide &&
+                   ThirdSide == triangle.ThirdSide;
+        }
     }
 }
