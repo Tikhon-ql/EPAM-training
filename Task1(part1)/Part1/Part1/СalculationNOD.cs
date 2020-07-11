@@ -44,7 +44,7 @@ namespace Part1
         /// <summary>
         /// Вычисление НОД с помощью алгоритма Стейна
         /// </summary>
-        public static int SteinNod(int arg1,int arg2,out long time)
+        public static int SteinNod(int arg1,int arg2,out TimeSpan time)
         {
             // Для замера времени работы метода
             Stopwatch stopwatch = new Stopwatch();
@@ -52,44 +52,47 @@ namespace Part1
             if (arg1 == 0)
             {
                 stopwatch.Stop();
-                time = stopwatch.ElapsedMilliseconds;
+                time = stopwatch.Elapsed;
                 return arg2;
             }
                 
             if (arg2 == 0)
             {
                 stopwatch.Stop();
-                time = stopwatch.ElapsedMilliseconds;
+                time = stopwatch.Elapsed;
                 return arg1;
             }
 
             if (arg1 == arg2)
             {
                 stopwatch.Stop();
-                time = stopwatch.ElapsedMilliseconds;
+                time = stopwatch.Elapsed;
                 return arg1;
+            }
+            if(arg1 == 1 || arg2 == 1)
+            {
+                stopwatch.Stop();
+                time = stopwatch.Elapsed;
+                return 1;
             }
             if (arg1 % 2 == 0 && arg2 % 2 == 0)
             {
-                return SteinNod(arg1/2,arg2/2,out time);
+                return SteinNod(arg1/2,arg2/2,out time) * 2;
             }
             else
             {
-                // если arg1 - четное, значит NOD(arg1,arg2) = NOD(arg1/2,arg2)
                 if (arg1 % 2 == 0 && arg2 % 2 != 0)
                 {
                     return SteinNod(arg1/2,arg2,out time);
                 }
                 else
                 {
-                    // если arg2 - четное, значит NOD(arg1,arg2) = NOD(arg1,arg2/2)
                     if (arg2 % 2 == 0)
                     {
                         return SteinNod(arg1, arg2 / 2,out time);
                     }
                     else
                     {
-                        // arg1 > arg2, значит NOD(arg1,arg2) = NOD((arg1 - arg2),arg2), но если от одного нечетного числа отнять другое нечетное число получится четное, значит чтобы получить не четное мы можем разделить на 2
                         if(arg1 > arg2)
                         {
                             return SteinNod((arg1 - arg2) / 2,arg2,out time);
@@ -106,7 +109,7 @@ namespace Part1
         /// Перегразка метода нахождения НОД с помощью алгоритма Евклида с дополнительным выходным параметром для получения времени работы метода
         /// </summary>
         /// <returns></returns>
-        public static int EvclideNod(int arg1, int arg2, out long time)
+        public static int EvclideNod(int arg1, int arg2, out TimeSpan time)
         {
             // Для замера времени работы метода
             Stopwatch stopwatch = new Stopwatch();
@@ -124,7 +127,7 @@ namespace Part1
                 }
             }
             stopwatch.Stop();
-            time = stopwatch.ElapsedMilliseconds;
+            time = stopwatch.Elapsed;
             return arg1 + arg2;
         }
        
@@ -132,16 +135,16 @@ namespace Part1
         /// Метод для подготовки данных о времени работы методов для гистограммы
         /// </summary>
         /// <returns></returns>
-        public static Pair<long,long> ForBarCharts()
+        public static Pair<TimeSpan,TimeSpan> ForBarCharts()
         {
             Random rnd = new Random();
             int arg1 = rnd.Next(0,100);
             int arg2 = rnd.Next(0, 100);
-            long evclideTime = 0;
+            TimeSpan evclideTime = new TimeSpan();
             EvclideNod(arg1,arg2,out evclideTime);
-            long steinTime = 0;
-            EvclideNod(arg1, arg2,out steinTime);
-            return new Pair<long, long>(evclideTime, steinTime);
+            TimeSpan steinTime = new TimeSpan();
+            SteinNod(arg1, arg2,out steinTime);
+            return new Pair<TimeSpan, TimeSpan>(evclideTime, steinTime);
         }
     }
 }

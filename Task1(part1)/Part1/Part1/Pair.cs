@@ -14,5 +14,9 @@ namespace Part1
             First = first;
             Second = second;
         }
+        public override string ToString()
+        {
+            return First + " " + Second;
+        }
     }
 }

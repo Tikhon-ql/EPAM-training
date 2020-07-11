@@ -10,8 +10,11 @@ namespace Part1
             Console.WriteLine(СalculationNOD.EvclideNod(18,9,6));
             Console.WriteLine(СalculationNOD.EvclideNod(18,6,9,27));
             Console.WriteLine(СalculationNOD.EvclideNod(15,20,150,50,125));
-            long time = 0;
+            TimeSpan time = new TimeSpan();
             Console.WriteLine(СalculationNOD.SteinNod(8,56,out time));
+            Console.WriteLine(time);
+            Console.WriteLine(СalculationNOD.EvclideNod(154, 465,out time));
+            Console.WriteLine(СalculationNOD.ForBarCharts().ToString());
         }
     }
 }
