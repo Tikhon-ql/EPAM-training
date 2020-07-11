@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,5 +19,11 @@ namespace Figures
         /// </summary>
         /// <returns></returns>
         public abstract double P();
+        public override bool Equals(object obj)
+        {
+            if (this.P() == ((Figure)obj).P())
+                return true;
+            return false;
+        }
     }
 }

@@ -4,6 +4,35 @@
     "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Part2\\Part2.csproj": {}
   },
   "projects": {
+    "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Figures\\Figures.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Figures\\Figures.csproj",
+        "projectName": "Figures",
+        "projectPath": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Figures\\Figures.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj",
+        "projectName": "FileWork",
+        "projectPath": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Figures\\Figures.csproj": {
+                "projectPath": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Figures\\Figures.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\Part2\\Part2.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,7 +55,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj": {
+                "projectPath": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

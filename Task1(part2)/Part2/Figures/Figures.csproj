@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\Figure.cs" />
-    <Compile Include="Factories\FigureFactory.cs" />
     <Compile Include="Models\Point.cs" />
     <Compile Include="Models\Rectangle.cs" />
     <Compile Include="Models\Square.cs" />

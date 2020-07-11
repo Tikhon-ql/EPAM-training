@@ -1,0 +1,3 @@
+Triangle;10;15;41
+Square;15
+Rectangle;15;15

@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileWork.cs" />
+    <Compile Include="FactoryMethod\FigureCreator.cs" />
+    <Compile Include="FactoryMethod\RectanlgeCreator.cs" />
+    <Compile Include="FactoryMethod\SquareCreator.cs" />
+    <Compile Include="FactoryMethod\TriangleCreator.cs" />
+    <Compile Include="FileWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

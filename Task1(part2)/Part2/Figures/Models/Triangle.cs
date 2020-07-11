@@ -9,85 +9,40 @@ namespace Figures.Models
 {
     public class Triangle : Figure
     {
-        public Point P1 { get; set; }
-        public Point P2 { get; set; }
-        public Point P3 { get; set; }
         public double FirstSide { get; set; } = 0;
         public double SecondSide { get; set; } = 0;
         public double ThirdSide { get; set; } = 0;
 
-        public Triangle(Point p1, Point p2, Point p3)
+        public Triangle(double f,double s,double t)
         {
-            P1 = p1;
-            P2 = p2;
-            P3 = p3;
+            FirstSide = f;
+            SecondSide = s;
+            ThirdSide = t;
         }
 
-        public Triangle(double firstSide, double secondSide, double thirdSide)
+
+        public override int GetHashCode()
         {
-            FirstSide = firstSide;
-            SecondSide = secondSide;
-            ThirdSide = thirdSide;
+            int hashCode = -1075677331;
+            hashCode = hashCode * -1521134295 + FirstSide.GetHashCode();
+            hashCode = hashCode * -1521134295 + SecondSide.GetHashCode();
+            hashCode = hashCode * -1521134295 + ThirdSide.GetHashCode();
+            return hashCode;
         }
 
         public override double P()
         {
-            if (FirstSide != 0)
-            {
-                return FirstSide + SecondSide + ThirdSide;
-            }
-            else
-            {
-                double a = P1.SearchDistance(P2);
-                double b = P2.SearchDistance(P3);
-                double c = P3.SearchDistance(P1);
-                return a + b + c;
-            }
+            return FirstSide + SecondSide + ThirdSide;
         }
 
         public override double S()
         {
             double p = this.P() / 2;
-            ////hfgh/////
-            if (FirstSide != 0) 
-            {
-                return Math.Sqrt(p * (p - FirstSide) * (p - SecondSide) * (p - ThirdSide));
-            }
-            else
-            {
-                double a = P1.SearchDistance(P2);
-                double b = P2.SearchDistance(P3);
-                double c = P3.SearchDistance(P1);
-                return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-            }
+            return Math.Sqrt(p * (p - FirstSide) * (p - SecondSide) * (p - ThirdSide));
         }
         public override string ToString()
         {
-            string result = "Triangle;";
-            if(FirstSide != 0)
-            {
-                result += FirstSide + ";" + SecondSide + ";" + ThirdSide;
-            }
-            else
-            {
-                result += P1.ToString() + ";" + P2.ToString() + ";" + P3.ToString();
-            }
-            return result;
-        }
-        public override bool Equals(object obj)
-        {
-            Triangle tr = ((Triangle)obj);
-            if(FirstSide != 0 && tr.FirstSide != 0)
-            {
-                if (FirstSide == tr.FirstSide && SecondSide == tr.SecondSide && ThirdSide == tr.ThirdSide)
-                    return true;
-            }
-            else
-            {
-                if (P1.Equals(tr.P1) && P2.Equals(tr.P2) && P3.Equals(tr.P3))
-                    return true;
-            }
-            return false;
+            return "Triangle;" + FirstSide.ToString() + ";" + SecondSide.ToString() + ";" + ThirdSide.ToString();
         }
     }
 }

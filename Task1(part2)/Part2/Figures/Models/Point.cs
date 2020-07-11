@@ -41,5 +41,10 @@ namespace Figures.Models
             else
                 return false;
         }
+        public static Point Parse(string str)
+        {
+            string[] strs = str.Split(',');
+            return new Point(int.Parse(strs[0]),Convert.ToInt32(strs[1]));
+        }
     }
 }

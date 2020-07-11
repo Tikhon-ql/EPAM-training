@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Figures/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Figures.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Figures.dll": {}
+        }
+      },
+      "FileWork/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Figures": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FileWork.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FileWork.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Figures/1.0.0": {
+      "type": "project",
+      "path": "../Figures/Figures.csproj",
+      "msbuildProject": "../Figures/Figures.csproj"
+    },
+    "FileWork/1.0.0": {
+      "type": "project",
+      "path": "../FileWork/FileWork.csproj",
+      "msbuildProject": "../FileWork/FileWork.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "FileWork >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Тихон\\.nuget\\packages\\": {}
@@ -32,7 +67,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj": {
+              "projectPath": "D:\\Тихон\\Git\\EPAM-training\\Task1(part2)\\Part2\\FileWork\\FileWork.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,0 +1,9 @@
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\bin\Debug\FileWork.dll
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\bin\Debug\FileWork.pdb
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\bin\Debug\Figures.dll
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\bin\Debug\Figures.pdb
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\obj\Debug\FileWork.csprojAssemblyReference.cache
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\obj\Debug\FileWork.csproj.CoreCompileInputs.cache
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\obj\Debug\FileWork.csproj.CopyComplete
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\obj\Debug\FileWork.dll
+D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\FileWork\obj\Debug\FileWork.pdb
