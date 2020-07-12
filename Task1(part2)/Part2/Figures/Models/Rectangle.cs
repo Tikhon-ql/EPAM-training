@@ -21,10 +21,7 @@ namespace Figures.Models
 
         public override bool Equals(object obj)
         {
-            return obj is Rectangle rectangle &&
-                   base.Equals(obj) &&
-                   Height == rectangle.Height &&
-                   Width == rectangle.Width;
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()

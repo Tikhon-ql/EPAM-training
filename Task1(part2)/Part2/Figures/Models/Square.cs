@@ -18,9 +18,7 @@ namespace Figures.Models
 
         public override bool Equals(object obj)
         {
-            return obj is Square square &&
-                   base.Equals(obj) &&
-                   Side == square.Side;
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()
