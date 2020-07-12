@@ -1,4 +1,4 @@
-Triangle;10;15;41
+Triangle;10;15;12
 Square;15
 Rectangle;16;4
-Triangle;12;20;8
+Triangle;11;11;18

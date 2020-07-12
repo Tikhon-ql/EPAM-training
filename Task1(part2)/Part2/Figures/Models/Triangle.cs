@@ -49,5 +49,6 @@ namespace Figures.Models
         {
             return base.Equals(obj);
         }
+       
     }
 }
