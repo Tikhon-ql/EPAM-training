@@ -21,7 +21,7 @@ namespace Part2.Tests
         {
             //arrange
             List<Figure> figures = new List<Figure>();
-            string filename = @"D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\Part2\Resources\test.txt";
+            string filename = @"Resources\test.txt";
             string expected = "Triangle;10;15;12Square;15Rectangle;16;4Triangle;11;11;18";
 
             //act
@@ -46,7 +46,7 @@ namespace Part2.Tests
             //arrange
             List<Figure> figures = new List<Figure>();
             string expected = "Rectangle;16;4Triangle;11;11;18";
-            string filename = @"D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\Part2\Resources\test.txt";
+            string filename = @"Resources\test.txt";
             Square square = new Square(10);
 
             //act
@@ -72,7 +72,7 @@ namespace Part2.Tests
             //arrange
             List<Figure> figures = new List<Figure>();
             string expected = "59,8116836412419;225;64;56,9209978830308;";
-            string filename = @"D:\Тихон\Git\EPAM-training\Task1(part2)\Part2\Part2\Resources\test.txt";
+            string filename = @"Resources\test.txt";
             Square square = new Square(10);
 
             //act

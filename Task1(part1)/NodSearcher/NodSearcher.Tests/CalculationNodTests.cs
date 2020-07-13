@@ -81,5 +81,24 @@ namespace NodSearcher.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// Проверка метода для подготовки данных для гистограммы
+        /// </summary>
+        [TestMethod]
+        public void ForBarCharts_shouldnot0returned()
+        {
+            //arrange
+
+            Pair<TimeSpan, TimeSpan> actual = new Pair<TimeSpan, TimeSpan>(new TimeSpan(0,0,0), new TimeSpan(0,0,0));
+            Pair<TimeSpan, TimeSpan> expected = new Pair<TimeSpan, TimeSpan>(new TimeSpan(0,0,0), new TimeSpan(0,0,0));
+
+
+            //act
+
+            actual = СalculationNod.ForBarCharts();
+
+            //assert
+            Assert.AreNotEqual(expected,actual);
+        }
     }
 }
