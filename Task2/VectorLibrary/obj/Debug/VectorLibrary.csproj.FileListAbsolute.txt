@@ -1,0 +1,6 @@
+D:\Тихон\Авы\Task2\VectorLibrary\bin\Debug\VectorLibrary.dll
+D:\Тихон\Авы\Task2\VectorLibrary\bin\Debug\VectorLibrary.pdb
+D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.csprojAssemblyReference.cache
+D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.csproj.CoreCompileInputs.cache
+D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.dll
+D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.pdb

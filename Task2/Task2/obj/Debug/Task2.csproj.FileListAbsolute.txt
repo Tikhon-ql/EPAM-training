@@ -1,2 +1,0 @@
-D:\Тихон\Git\EPAM-training\Task2\Task2\obj\Debug\Task2.csprojAssemblyReference.cache
-D:\Тихон\Git\EPAM-training\Task2\Task2\obj\Debug\Task2.csproj.CoreCompileInputs.cache
