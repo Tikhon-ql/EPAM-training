@@ -6,22 +6,23 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Task2
 {
-    class Vector
+    public class Vector
     {
-        public int X { get; set; } = 0;
-        public int Y { get; set; } = 0;
-        public int Z { get; set; } = 0;
+        public double X { get; set; } = 0;
+        public double Y { get; set; } = 0;
+        public double Z { get; set; } = 0;
         public double Length { get; set; } = 0;
 
-        public Vector(int x, int y, int z)
+        public Vector(double x, double y, double z)
         {
             X = x;
             Y = y;
             Z = z;
-            Length = Math.Sqrt(X * X + Y * Y + Z * Z);
+            Length = Math.Round(Math.Sqrt(X * X + Y * Y + Z * Z),3);
         }
         /// <summary>
         /// Перегрузка оператора сложения
@@ -41,7 +42,7 @@ namespace Task2
         /// <returns></returns>
         public static Vector operator -(Vector v1, Vector v2)
         {
-            return new Vector(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v1.Z);
+            return new Vector(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         }
         /// <summary>
         /// Перегрузка оператора умножения
@@ -61,7 +62,10 @@ namespace Task2
         /// <returns></returns>
         public static Vector operator /(Vector v1, Vector v2)
         {
-            return v1 * new Vector(1 / v2.X, 1 / v2.Y, 1 / v2.Z);
+            double v2x = Math.Round(1 / v2.X,3);
+            double v2y = Math.Round(1 / v2.Y,3);
+            double v2z = Math.Round(1 / v2.Z,3);
+            return v1 * new Vector(v2x,v2y,v2z);
         }
         /// <summary>
         /// Перегрузка оператора унарного минуса
@@ -89,6 +93,13 @@ namespace Task2
         {
             return new Vector(v.X - 1, v.Y - 1, v.Z - 1);
         }
+        // Перегрузка оператора остатка от деления
+        public static Vector operator %(Vector v1, Vector v2)
+        {
+            Vector v = v1 / v2;
+            Vector nv = new Vector(Convert.ToInt32(v.X), Convert.ToInt32(v.Y), Convert.ToInt32(v.Z));
+            return v - nv;
+        }
         // Перегрузка операторова сравнения
         public static bool operator ==(Vector v1, Vector v2)
         {
@@ -102,11 +113,18 @@ namespace Task2
                 return true;
             return false;
         }
-        public static Vector operator %(Vector v1, Vector v2)
+       
+        public static bool operator >(Vector v1,Vector v2)
         {
-            Vector v = v1 / v2;
-            Vector nv = new Vector(Convert.ToInt32(v.X), Convert.ToInt32(v.Y), Convert.ToInt32(v.Z));
-            return v - nv;
+            if (v1.Length > v2.Length)
+                return true;
+            return false;
+        }
+        public static bool operator <(Vector v1, Vector v2)
+        {
+            if (v1.Length < v2.Length)
+                return true;
+            return false;
         }
 
         public override bool Equals(object obj)
@@ -119,6 +137,10 @@ namespace Task2
         public override int GetHashCode()
         {
             return 613529524 + Y.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return X + " " + Y + " " + Z;
         }
     }
 }

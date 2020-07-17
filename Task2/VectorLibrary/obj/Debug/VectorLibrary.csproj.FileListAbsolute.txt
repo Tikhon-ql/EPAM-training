@@ -4,3 +4,9 @@ D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.csprojAssemblyR
 D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.csproj.CoreCompileInputs.cache
 D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.dll
 D:\Тихон\Авы\Task2\VectorLibrary\obj\Debug\VectorLibrary.pdb
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\bin\Debug\VectorLibrary.dll
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\bin\Debug\VectorLibrary.pdb
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.csprojAssemblyReference.cache
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.csproj.CoreCompileInputs.cache
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.dll
+D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.pdb
