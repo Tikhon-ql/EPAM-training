@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,12 +9,21 @@ namespace PolinomialLibrary
 {
     public class Polynomial
     {
+        /// <summary>
+        /// Массив коэффициентов
+        /// </summary>
         public List<double> Coefficients { get; private set; }
 
-        public Polynomial(List<double> coefficients)
+        public Polynomial(params double[] coefficients)
         {
-            Coefficients = coefficients;
+            Coefficients = coefficients.ToList();
         }
+        /// <summary>
+        /// Перегрузка оператора сложения двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Polynomial operator+(Polynomial p1,Polynomial p2)
         {
             List<double> res = new List<double>();
@@ -28,8 +38,14 @@ namespace PolinomialLibrary
                     b = p2.Coefficients[i];
                 res.Add(a + b);
             }
-            return new Polynomial(res);
+            return new Polynomial(res.ToArray());
         }
+        /// <summary>
+        /// Перегрузка оператора вычитания двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Polynomial operator -(Polynomial p1, Polynomial p2)
         {
             List<double> res = new List<double>();
@@ -44,11 +60,17 @@ namespace PolinomialLibrary
                     b = p2.Coefficients[i];
                 res.Add(a - b);
             }
-            return new Polynomial(res);
+            return new Polynomial(res.ToArray());
         }
+        /// <summary>
+        /// Перегрузка оператора умножения двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Polynomial operator *(Polynomial p1, Polynomial p2)
         {
-            double[] res = new double[p1.Coefficients.Count + p2.Coefficients.Count - 1]
+            double[] res = new double[p1.Coefficients.Count + p2.Coefficients.Count - 1];
             for(int i = 0; i < p1.Coefficients.Count; i++)
             {
                 for(int j = 0;j<p2.Coefficients.Count;j++)
@@ -58,9 +80,78 @@ namespace PolinomialLibrary
             }
             return new Polynomial(res);
         }
-        public static Polynomial operator /(Polynomial p1, Polynomial p2)
+        //public static Polynomial operator /(Polynomial p1, Polynomial p2)
+        //{
+        //    //double[] res = new double[p1.Coefficients.Count - p2.Coefficients.Count + 1];
+        //    //double[] firstClone = (double[])p1.Coefficients.ToArray().Clone();
+        //    //for(int i = 0; i < res.Length; i++)
+        //    //{
+        //    //    double cof = firstClone[firstClone.Length - i - 1] / p2.Coefficients.Last();
+        //    //    res[res.Length - i - 1] = cof;
+        //    //    for(int j = 0; j < p2.Coefficients.Count; j++)
+        //    //    {
+        //    //        firstClone[firstClone.Length - i - j - 1] -= cof * p2.Coefficients[p2.Coefficients.Count - j - 1];
+        //    //    }
+        //    //}
+        //    //return new Polynomial(res);
+        //}
+        /// <summary>
+        /// Перегрузка оператора умножения многочлена и числа
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static Polynomial operator *(Polynomial p1, double p)
         {
+            List<double> res = new List<double>();
+            foreach (double item in p1.Coefficients)
+            {
+                res.Add(item * p);
+            }
+            return new Polynomial(res.ToArray());
+        }
+        public static Polynomial operator *(double p,Polynomial p1)
+        {
+            return p1 * p;
+        }
+        /// <summary>
+        /// Перегрузка оператора равенства двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Polynomial p1,Polynomial p2)
+        {
+            return p1.Coefficients.SequenceEqual(p2.Coefficients);
+        }
+        /// <summary>
+        /// Перегрузка оператора неравенства двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Polynomial p1, Polynomial p2)
+        {
+            if (!p1.Coefficients.SequenceEqual(p2.Coefficients))
+                return true;
+            return false;
+        }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Polynomial polynomial &&
+                   this.Coefficients.SequenceEqual(((Polynomial)obj).Coefficients);
+        }
+
+        public override int GetHashCode()
+        {
+            return -971426165 + EqualityComparer<List<double>>.Default.GetHashCode(Coefficients);
+        }
+        public override string ToString()
+        {
+            string str = "";
+            Coefficients.ForEach(i => { str += i.ToString();});
+            return str;
         }
     }
 }

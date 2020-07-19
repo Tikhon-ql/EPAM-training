@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{0F167FA6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolinomialLibrary", "PolinomialLibrary\PolinomialLibrary.csproj", "{6FB13F47-C0FA-48EC-BB42-3C40C9784DB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Polinomial.Tests", "_Polinomial.Tests\_Polinomial.Tests.csproj", "{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{6FB13F47-C0FA-48EC-BB42-3C40C9784DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FB13F47-C0FA-48EC-BB42-3C40C9784DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FB13F47-C0FA-48EC-BB42-3C40C9784DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{85FCECE1-736C-45A4-8DB8-F6439CC1BF3E} = {5FE00766-8FFD-44FC-877A-290BAE61517E}
 		{72D62E63-4A85-4633-BA02-43C884CD8504} = {5FE00766-8FFD-44FC-877A-290BAE61517E}
 		{6FB13F47-C0FA-48EC-BB42-3C40C9784DB0} = {0F167FA6-075E-49BD-9B42-3414EF3F5414}
+		{C6E93CA9-7AA9-4F4D-BA09-857B4F7B9E3D} = {0F167FA6-075E-49BD-9B42-3414EF3F5414}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C37F00CA-D6ED-4390-A531-532F5106D021}

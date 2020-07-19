@@ -1,0 +1,6 @@
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\obj\Debug\PolinomialLibrary.csprojAssemblyReference.cache
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\obj\Debug\PolinomialLibrary.csproj.CoreCompileInputs.cache
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\bin\Debug\PolinomialLibrary.dll
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\bin\Debug\PolinomialLibrary.pdb
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\obj\Debug\PolinomialLibrary.dll
+D:\Тихон\Git\EPAM-training\Task2\PolinomialLibrary\obj\Debug\PolinomialLibrary.pdb
