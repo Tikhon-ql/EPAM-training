@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -80,21 +81,29 @@ namespace PolinomialLibrary
             }
             return new Polynomial(res);
         }
-        //public static Polynomial operator /(Polynomial p1, Polynomial p2)
-        //{
-        //    //double[] res = new double[p1.Coefficients.Count - p2.Coefficients.Count + 1];
-        //    //double[] firstClone = (double[])p1.Coefficients.ToArray().Clone();
-        //    //for(int i = 0; i < res.Length; i++)
-        //    //{
-        //    //    double cof = firstClone[firstClone.Length - i - 1] / p2.Coefficients.Last();
-        //    //    res[res.Length - i - 1] = cof;
-        //    //    for(int j = 0; j < p2.Coefficients.Count; j++)
-        //    //    {
-        //    //        firstClone[firstClone.Length - i - j - 1] -= cof * p2.Coefficients[p2.Coefficients.Count - j - 1];
-        //    //    }
-        //    //}
-        //    //return new Polynomial(res);
-        //}
+        public static Polynomial operator /(Polynomial p1, Polynomial p2)
+        {
+            List<double> res = new List<double>();
+            List<double> tmp = p1.Coefficients.ToList();
+            int currentDegree = p1.Coefficients.Count + 1;
+            for(int i = 0;i <= p1.Coefficients.Count - p2.Coefficients.Count; i++)
+            {
+                if(currentDegree >= 0)
+                {
+                    res.Add(tmp[i] / p2.Coefficients[0]);
+                    for(int j = 0; j < p2.Coefficients.Count; j++)
+                    {
+                        tmp[i + j] = tmp[i + j] - (tmp[i] * p2.Coefficients[j]);
+                    }
+                    currentDegree--;
+                }
+                else
+                {
+                    res.Add(tmp[i] / p2.Coefficients[0]);
+                }
+            }
+            return new Polynomial(tmp.ToArray());
+        }
         /// <summary>
         /// Перегрузка оператора умножения многочлена и числа
         /// </summary>

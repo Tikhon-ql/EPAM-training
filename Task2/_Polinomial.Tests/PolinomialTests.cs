@@ -92,19 +92,19 @@ namespace _Polinomial.Tests
             Assert.IsTrue(actual1);
             Assert.IsTrue(actual2);
         }
-        //[TestMethod]
-        //public void Div()
-        //{
-        //    //arrange
-        //    Polynomial p1 = new Polynomial(8, 12, 99, 150);
-        //    Polynomial p2 = new Polynomial(40, 7, 3);
-        //    Polynomial expected = new Polynomial(96.54, 149.21);
-        //    //act
-        //    Polynomial actual = p1 / p2;
-        //    MessageBox.Show(actual.ToString());
-        //    MessageBox.Show(expected.ToString());
-        //    //assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+        [TestMethod]
+        public void Div()
+        {
+            //arrange
+            Polynomial p1 = new Polynomial(9,5);
+            Polynomial p2 = new Polynomial(3,1);
+            Polynomial expected = new Polynomial(-1);
+            //act
+            Polynomial actual = p1 / p2;
+            MessageBox.Show(actual.ToString());
+            MessageBox.Show(expected.ToString());
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
