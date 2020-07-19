@@ -83,6 +83,12 @@ namespace PolinomialLibrary
             }
             return new Polynomial(res);
         }
+        /// <summary>
+        /// Перегрузка оператора деления двух многочленов
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
         public static Polynomial operator /(Polynomial p1, Polynomial p2)
         {
             List<double> tmp = new List<double>();
@@ -100,10 +106,29 @@ namespace PolinomialLibrary
                     currentDegree--;
                 }
             }
-            return new Polynomial(tmp.ToArray());
+            return new Polynomial(res.ToArray());
         }
         /// <summary>
-        /// Перегрузка оператора умножения многочлена и числа
+        /// Перегрузка оператора деления многочлена на вещественное число
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public static Polynomial operator /(Polynomial p1, double p)
+        {
+            if(p == 0)
+            {
+                throw new DivideByZeroException();
+            }
+            List<double> res = new List<double>();
+            foreach (double item in p1.Coefficients)
+            {
+                res.Add(Math.Round(item/p,3));
+            }
+            return new Polynomial(res.ToArray());
+        }
+        /// <summary>
+        /// Перегрузка оператора умножения многочлена и вещественного числа
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -116,10 +141,6 @@ namespace PolinomialLibrary
                 res.Add(item * p);
             }
             return new Polynomial(res.ToArray());
-        }
-        public static Polynomial operator *(double p,Polynomial p1)
-        {
-            return p1 * p;
         }
         /// <summary>
         /// Перегрузка оператора равенства двух многочленов

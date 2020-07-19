@@ -106,5 +106,22 @@ namespace _Polinomial.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        [TestMethod]
+        public void Div_Polinomial_15_7_9and_double_12()
+        {
+            //arrange
+            Polynomial p1 = new Polynomial(15, 7,9);
+            double num1 = 12;
+            double zero = 0;
+            Polynomial expected = new Polynomial(1.25, 0.583, 0.75);
+            //act
+            Polynomial actual = p1 / num1;
+            //assert
+            Assert.AreEqual(expected, actual);
+            Assert.ThrowsException<DivideByZeroException>(() => p1 / zero);
+        }
     }
 }
