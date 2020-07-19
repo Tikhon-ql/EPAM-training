@@ -16,7 +16,10 @@ namespace ProductTask.Models
         /// <param name="product"></param>
         public static explicit operator FoodProducts(ElectricalProducts product)
         {
-            return new FoodProducts(product.Name, product.Price);
+            if(product != null)
+                return new FoodProducts(product.Name, product.Price);
+            else 
+                throw new Exception();
         }
         /// <summary>
         /// Преобразование из StationeryProducts к FoodProducts
@@ -24,7 +27,10 @@ namespace ProductTask.Models
         /// <param name="product"></param>
         public static explicit operator FoodProducts(StationeryProducts product)
         {
-            return new FoodProducts(product.Name, product.Price);
+            if (product != null)
+                return new FoodProducts(product.Name, product.Price);
+            else
+                throw new Exception();
         }
         /// <summary>
         /// Перегрузка оператора сложения

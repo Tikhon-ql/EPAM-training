@@ -19,7 +19,7 @@ namespace ProductTask.Abstarct
             Price = price;
         }
         /// <summary>
-        /// Перобразование к int
+        /// Перобразование к целочисленному типу (int)
         /// </summary>
         /// <param name="product"></param>
         public static explicit operator int(Product product)
@@ -27,12 +27,16 @@ namespace ProductTask.Abstarct
             return Convert.ToInt32(product.Price) * 100;
         }
         /// <summary>
-        /// Преобразование к double
+        /// Преобразование к вещественному типу(decimal)
         /// </summary>
         /// <param name="product"></param>
-        public static explicit operator double(Product product)
+        public static explicit operator decimal(Product product)
         {
-            return Convert.ToDouble(product.Price) * 100;
+            return product.Price * 100;
+        }
+        public override string ToString()
+        {
+            return Name + " " + Kind + " " + Price;
         }
     }
 }
