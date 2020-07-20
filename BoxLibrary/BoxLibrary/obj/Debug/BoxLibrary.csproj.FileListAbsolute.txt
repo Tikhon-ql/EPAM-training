@@ -1,0 +1,2 @@
+D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.csprojAssemblyReference.cache
+D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.csproj.CoreCompileInputs.cache
