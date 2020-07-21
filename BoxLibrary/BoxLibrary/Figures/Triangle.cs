@@ -18,6 +18,10 @@ namespace BoxLibrary.Figures
             SecondSide = s;
             ThirdSide = t;
         }
+        public Triangle()
+        {
+
+        }
 
 
         public override int GetHashCode()
@@ -48,6 +52,19 @@ namespace BoxLibrary.Figures
         {
             return base.Equals(obj);
         }
-
+        public override Dictionary<string, string> AttributeXml()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("first", FirstSide.ToString());
+            dictionary.Add("second", SecondSide.ToString());
+            dictionary.Add("third", ThirdSide.ToString());
+            dictionary.Add("color", Color.ToString());
+            dictionary.Add("material", Material.ToString());
+            return dictionary;
+        }
+        public override string XmlString()
+        {
+            return "Triangle";
+        }
     }
 }

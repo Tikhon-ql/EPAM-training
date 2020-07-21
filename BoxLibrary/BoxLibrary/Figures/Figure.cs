@@ -38,6 +38,8 @@ namespace BoxLibrary.Figures
         {
             if (!IsPainted)
                 Color = color;
+            else
+                throw new Exception("Данную фигуру нельзя окрашивать"); 
         }
         /// <summary>
         /// Метод нахождения площади фигуры
@@ -68,5 +70,15 @@ namespace BoxLibrary.Figures
         {
             return base.GetHashCode();
         }
+        /// <summary>
+        /// Метод для подговки содержимого тега
+        /// </summary>
+        /// <returns></returns>
+        public abstract string XmlString();
+        /// <summary>
+        /// Метод для подговки аттрибутов xml
+        /// </summary>
+        /// <returns></returns>
+        public abstract Dictionary<string,string> AttributeXml();
     }
 }

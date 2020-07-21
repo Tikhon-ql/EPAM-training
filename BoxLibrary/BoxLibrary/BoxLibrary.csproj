@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Box\Box.cs" />
     <Compile Include="Color.cs" />
-    <Compile Include="Figures\Ball.cs" />
+    <Compile Include="Figures\Circle.cs" />
     <Compile Include="Figures\Figure.cs" />
     <Compile Include="Figures\Rectangle.cs" />
     <Compile Include="Figures\Square.cs" />

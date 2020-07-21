@@ -12,6 +12,10 @@ namespace BoxLibrary.Figures
         {
             Side = s;
         }
+        public Square()
+        {
+
+        }
         // сторона квадрата
         public double Side { get; set; } = 0;
 
@@ -37,6 +41,18 @@ namespace BoxLibrary.Figures
         public override string ToString()
         {
             return "Square;" + Side;
+        }
+        public override Dictionary<string, string> AttributeXml()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("side",Side.ToString());
+            dictionary.Add("color", Color.ToString());
+            dictionary.Add("material", Material.ToString());
+            return dictionary;
+        }
+        public override string XmlString()
+        {
+            return "Square";
         }
     }
 }

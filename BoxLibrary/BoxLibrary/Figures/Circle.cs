@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace BoxLibrary.Figures
 {
-    public class Ball:Figure
+    public class Circle:Figure
     {
         public double R { get; set; }
-        public Ball(double r,Material material,Color color):base(material,color)
+        public Circle(double r,Material material,Color color):base(material,color)
         {
             R = r;
         }
-        public Ball(Figure fig,int r):base(fig.Material, fig.Color)
+        public Circle(Figure fig,int r):base(fig.Material, fig.Color)
         {
             if(r * r * Math.PI < fig.S())
             {
                 R = r;
             }
+        }
+        public Circle()
+        {
+
         }
         /// <summary>
         /// Метод нахождения периметра круга
@@ -50,6 +54,18 @@ namespace BoxLibrary.Figures
         public override int GetHashCode()
         {
             return -51877379 + R.GetHashCode();
+        }
+        public override string XmlString()
+        {
+            return "Circle";
+        }
+        public override Dictionary<string,string> AttributeXml()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("radius",R.ToString());
+            dictionary.Add("color", Color.ToString());
+            dictionary.Add("marerial", Material.ToString());
+            return dictionary;
         }
     }
 }

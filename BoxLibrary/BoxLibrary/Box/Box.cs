@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BoxLibrary.Box
 {
@@ -134,6 +136,127 @@ namespace BoxLibrary.Box
                     res.Add(item.Value);
             }
             return res;
+        }
+        /// <summary>
+        /// Метод сохраняющий все фигуры в xml файл
+        /// </summary>
+        /// <param name="filename">имя файла</param>
+        /// <returns></returns>
+        public bool SaveFiguresXmlWriter(string filename)
+        {
+            try
+            {
+                using (XmlWriter writer = XmlWriter.Create(filename))
+                {
+                    writer.WriteStartElement("figures");
+                    foreach (KeyValuePair<int, Figure> item in figures)
+                    {
+                        writer.WriteStartElement("figure");
+                        foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
+                        {
+                            writer.WriteAttributeString(pair.Key, pair.Value);
+                        }
+                        writer.WriteString(item.Value.XmlString());
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Метод сохраняющий фигуры из определенного материала в xml файл
+        /// </summary>
+        /// <param name="filename">имя файла</param>
+        /// <param name="material">заданный материал</param>
+        /// <returns></returns>
+        public bool SaveFiguresXmlWriter(string filename,Material material)
+        {
+            try
+            {
+                using (XmlWriter writer = XmlWriter.Create(filename))
+                {
+                    writer.WriteStartElement("figures");
+                    foreach (KeyValuePair<int, Figure> item in figures)
+                    {
+                        if(item.Value.Material == material)
+                        {
+                            writer.WriteStartElement("figure");
+                            foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
+                            {
+                                writer.WriteAttributeString(pair.Key, pair.Value);
+                            }
+                            writer.WriteString(item.Value.XmlString());
+                        }
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool LoadFiguresXmlReader(string filename)
+        {
+            try
+            {
+                using(XmlReader reader = XmlReader.Create(filename))
+                {
+                    while (reader.Read())
+                    {
+                        if(reader.NodeType == XmlNodeType.Element)
+                        {
+                            switch (reader.Value)
+                            {
+                                case "Circle":
+                                    Circle circle = new Circle();
+                                    circle.R = double.Parse(reader.GetAttribute("radius"));
+                                    circle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
+                                    circle.Material = (Material)Enum.Parse(typeof(Material), reader.GetAttribute("material"));
+                                    this.AddFigure(circle);
+                                    break;
+                                case "Rectangle":
+                                    Rectangle rectangle = new Rectangle();
+                                    rectangle.Width = double.Parse(reader.GetAttribute("width"));
+                                    rectangle.Height = double.Parse(reader.GetAttribute("height"));
+                                    rectangle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
+                                    rectangle.Material = (Material)Enum.Parse(typeof(Material), reader.GetAttribute("material"));
+                                    this.AddFigure(rectangle);
+                                    break;
+                                case "Triangle":
+                                    Triangle triangle = new Triangle();
+                                    triangle.FirstSide = double.Parse(reader.GetAttribute("first"));
+                                    triangle.SecondSide = double.Parse(reader.GetAttribute("second"));
+                                    triangle.ThirdSide = double.Parse(reader.GetAttribute("third"));
+                                    triangle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
+                                    triangle.Material = (Material)Enum.Parse(typeof(Material), reader.GetAttribute("material"));
+                                    this.AddFigure(triangle);
+                                    break;
+                                case "Square":
+                                    Square square = new Square();
+                                    square.Side = double.Parse(reader.GetAttribute("side"));
+                                    square.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
+                                    square.Material = (Material)Enum.Parse(typeof(Material), reader.GetAttribute("material"));
+                                    this.AddFigure(square);
+                                    break;
+                            }
+                        }
+
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
