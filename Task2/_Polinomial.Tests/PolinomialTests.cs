@@ -102,9 +102,9 @@ namespace _Polinomial.Tests
         public void Div_Polinomial_22_5_14_and_Polinomial_11_6_Polinomial_2_minus_0_point_64returned()
         {
             //arrange
-            Polynomial p1 = new Polynomial(22,5,14);
-            Polynomial p2 = new Polynomial(11,6);
-            Polynomial expected = new Polynomial(2,-0.64);
+            Polynomial p1 = new Polynomial(9, 5, 2);
+            Polynomial p2 = new Polynomial(3, 2, 1, 0);
+            Polynomial expected = new Polynomial(6, 3, 1, 0);
             //act
             Polynomial actual = p1 / p2;
             //assert

@@ -125,7 +125,7 @@ namespace PolinomialLibrary
                 List<double> res = new List<double>();
                 List<double> tmp = p1.Coefficients.ToList();
                 int currentDegree = p1.Coefficients.Count + 1;
-                for (int i = 0; i <= p1.Coefficients.Count - p2.Coefficients.Count; i++)
+                for (int i = 0; i <=p1.Coefficients.Count - p2.Coefficients.Count; i++)
                 {
                     if (currentDegree >= 0)
                     {
