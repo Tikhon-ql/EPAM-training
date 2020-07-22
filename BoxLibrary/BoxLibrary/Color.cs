@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BoxLibrary
 {
+    /// <summary>
+    /// Перечисление цветов
+    /// </summary>
     public enum Color
     {
         Red,

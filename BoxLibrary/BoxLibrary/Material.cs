@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BoxLibrary
 {
+    /// <summary>
+    /// Перечисление материалы для создания фигур
+    /// </summary>
     public enum Material
     {
         Paper,

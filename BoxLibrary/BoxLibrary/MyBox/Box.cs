@@ -1,6 +1,7 @@
 ﻿using BoxLibrary.Figures;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -8,8 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace BoxLibrary.Box
+namespace BoxLibrary.MyBox
 {
+    /// <summary>
+    /// Класс коробки
+    /// </summary>
     public class Box
     {
         /// <summary>
@@ -64,6 +68,11 @@ namespace BoxLibrary.Box
             else
                 throw new IndexOutOfRangeException();
         }
+        /// <summary>
+        /// Метод замены фигуры
+        /// </summary>
+        /// <param name="index">Индекс заменяемой фигуры</param>
+        /// <param name="fig">Фигура, на которую заменяют</param>
         public void Replace(int index, Figure fig)
         {
             if (index < figures.Count)
@@ -74,6 +83,11 @@ namespace BoxLibrary.Box
             else
                 throw new IndexOutOfRangeException();
         }
+        /// <summary>
+        /// Метод поиска фигуры
+        /// </summary>
+        /// <param name="fig">Шаблон фигуры</param>
+        /// <returns></returns>
         public List<Figure> Searche(Figure fig)
         {
             return figures.Where(f => f.Equals(fig)).Select(f=>f.Value).ToList();
@@ -127,6 +141,11 @@ namespace BoxLibrary.Box
             }
             return res;
         }
+        /// <summary>
+        /// Метод получения фигуры определенного материала
+        /// </summary>
+        /// <param name="material">Материал</param>
+        /// <returns></returns>
         public List<Figure> GetExactFigureByMaterial(Material material)
         {
             List<Figure> res = new List<Figure>();
@@ -146,6 +165,8 @@ namespace BoxLibrary.Box
         {
             try
             {
+                if (filename == "" || filename.Split('.')[1] != "xml")
+                    throw new Exception();
                 using (XmlWriter writer = XmlWriter.Create(filename))
                 {
                     writer.WriteStartElement("figures");
@@ -203,6 +224,11 @@ namespace BoxLibrary.Box
                 return false;
             }
         }
+        /// <summary>
+        /// Метод получения фигур из xml файла
+        /// </summary>
+        /// <param name="filename">Имя файла</param>
+        /// <returns></returns>
         public bool LoadFiguresXmlReader(string filename)
         {
             try
