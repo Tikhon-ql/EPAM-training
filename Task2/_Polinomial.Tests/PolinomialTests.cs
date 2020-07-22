@@ -103,8 +103,8 @@ namespace _Polinomial.Tests
         {
             //arrange
             Polynomial p1 = new Polynomial(9, 5, 2);
-            Polynomial p2 = new Polynomial(3, 2, 1, 0);
-            Polynomial expected = new Polynomial(6, 3, 1, 0);
+            Polynomial p2 = new Polynomial(3, 2, 1);
+            Polynomial expected = new Polynomial(3);
             //act
             Polynomial actual = p1 / p2;
             //assert
