@@ -258,5 +258,20 @@ namespace BoxLibrary.Box
                 return false;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Box box &&
+                   Count == box.Count &&
+                   EqualityComparer<Dictionary<int, Figure>>.Default.Equals(figures, box.figures);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -13909310;
+            hashCode = hashCode * -1521134295 + Count.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<Dictionary<int, Figure>>.Default.GetHashCode(figures);
+            return hashCode;
+        }
     }
 }

@@ -117,7 +117,7 @@ namespace MyVector.Tests
         /// Проверка перегруженных методов сравнения(> и <)
         /// </summary>
         [TestMethod]
-        public void Vector_15_42_24moreVector_4_6_10()
+        public void Vector_15_42_24morethanVector_4_6_10()
         {
             Vector v1 = new Vector(15, 42, 24);
             Vector v2 = new Vector(4, 6, 10);

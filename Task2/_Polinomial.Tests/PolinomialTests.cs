@@ -36,7 +36,6 @@ namespace _Polinomial.Tests
             Polynomial expected = new Polynomial(-2, 56, 3,4);
             //act
             Polynomial actual = p1 - p2;
-            
             //assert
             Assert.AreEqual(expected, actual);
         }
@@ -85,29 +84,34 @@ namespace _Polinomial.Tests
             Polynomial p1 = new Polynomial(12, 15, 45);
             Polynomial p2 = new Polynomial(12, 15, 45);
             Polynomial p3 = new Polynomial(14, 75, 6);
+            Polynomial p4 = null;
             //act
             bool actual1 = p1 == p2;
             bool actual2 = p1 != p3;
+            
             //assert
+
             Assert.IsTrue(actual1);
             Assert.IsTrue(actual2);
+            Assert.IsFalse(p1==p4);
         }
+        /// <summary>
+        /// Методя для проверки перегруженный оператора деления двух многочленов
+        /// </summary>
         [TestMethod]
-        public void Div()
+        public void Div_Polinomial_22_5_14_and_Polinomial_11_6_Polinomial_2_minus_0_point_64returned()
         {
             //arrange
-            Polynomial p1 = new Polynomial(9,5);
-            Polynomial p2 = new Polynomial(3,1);
-            Polynomial expected = new Polynomial(-1);
+            Polynomial p1 = new Polynomial(22,5,14);
+            Polynomial p2 = new Polynomial(11,6);
+            Polynomial expected = new Polynomial(2,-0.64);
             //act
             Polynomial actual = p1 / p2;
-            MessageBox.Show(actual.ToString());
-            MessageBox.Show(expected.ToString());
             //assert
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// 
+        ///  Методя для проверки перегруженный оператора деления многочлена на вещественное число
         /// </summary>
         [TestMethod]
         public void Div_Polinomial_15_7_9and_double_12()
@@ -116,7 +120,7 @@ namespace _Polinomial.Tests
             Polynomial p1 = new Polynomial(15, 7,9);
             double num1 = 12;
             double zero = 0;
-            Polynomial expected = new Polynomial(1.25, 0.583, 0.75);
+            Polynomial expected = new Polynomial(1.25, 0.58, 0.75);
             //act
             Polynomial actual = p1 / num1;
             //assert

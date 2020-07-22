@@ -4,3 +4,9 @@ D:\Тихон\Git\EPAM-training\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.
 D:\Тихон\Git\EPAM-training\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.csproj.CoreCompileInputs.cache
 D:\Тихон\Git\EPAM-training\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.dll
 D:\Тихон\Git\EPAM-training\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.pdb
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\bin\Debug\ProductsLibrary.dll
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\bin\Debug\ProductsLibrary.pdb
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.csprojAssemblyReference.cache
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.dll
+C:\Users\Developer\Desktop\Task2\ProductsLibrary\obj\Debug\ProductsLibrary.pdb

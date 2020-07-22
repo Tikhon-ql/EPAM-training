@@ -37,7 +37,10 @@ namespace ProductTask.Models
         /// </summary>
         public static ElectricalProducts operator +(ElectricalProducts e1, ElectricalProducts e2)
         {
-            return new ElectricalProducts(e1.Name + "-" + e2.Name, (e1.Price + e2.Price) / 2);
+            if (e1 != null && e2 != null)
+                return new ElectricalProducts(e1.Name + "-" + e2.Name, (e1.Price + e2.Price) / 2);
+            else
+                throw new NullReferenceException();
         }
     }
 }

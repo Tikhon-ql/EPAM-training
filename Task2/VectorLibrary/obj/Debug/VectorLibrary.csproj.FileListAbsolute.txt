@@ -10,3 +10,9 @@ D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.cspr
 D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.csproj.CoreCompileInputs.cache
 D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.dll
 D:\Тихон\Git\EPAM-training\Task2\VectorLibrary\obj\Debug\VectorLibrary.pdb
+C:\Users\Developer\Desktop\Task2\VectorLibrary\bin\Debug\VectorLibrary.dll
+C:\Users\Developer\Desktop\Task2\VectorLibrary\bin\Debug\VectorLibrary.pdb
+C:\Users\Developer\Desktop\Task2\VectorLibrary\obj\Debug\VectorLibrary.csprojAssemblyReference.cache
+C:\Users\Developer\Desktop\Task2\VectorLibrary\obj\Debug\VectorLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Developer\Desktop\Task2\VectorLibrary\obj\Debug\VectorLibrary.dll
+C:\Users\Developer\Desktop\Task2\VectorLibrary\obj\Debug\VectorLibrary.pdb

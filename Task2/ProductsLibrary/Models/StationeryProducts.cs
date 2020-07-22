@@ -37,7 +37,10 @@ namespace ProductTask.Models
         /// </summary>
         public static StationeryProducts operator +(StationeryProducts s1, StationeryProducts s2)
         {
-            return new StationeryProducts(s1.Name + "-" + s2.Name, (s1.Price + s2.Price) / 2);
+            if (s1 != null && s2 != null)
+                return new StationeryProducts(s1.Name + "-" + s2.Name, (s1.Price + s2.Price) / 2);
+            else
+                throw new NullReferenceException();
         }
     }
 }
