@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30525F32-6ABB-41D3-8A48-50D47FD81FC9}</ProjectGuid>
+    <ProjectGuid>{439F14EF-F6C6-40B0-8D05-D6C5141A35B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BoxLibrary</RootNamespace>
@@ -41,15 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyBox\Box.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="Figures\Circle.cs" />
-    <Compile Include="Figures\Figure.cs" />
-    <Compile Include="Figures\Rectangle.cs" />
-    <Compile Include="Figures\Square.cs" />
-    <Compile Include="Figures\Triangle.cs" />
-    <Compile Include="Material.cs" />
+    <Compile Include="Box.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FiguresLibrary\FiguresLibrary.csproj">
+      <Project>{9EC51462-7F4D-45DE-A31E-FFAC597F2F51}</Project>
+      <Name>FiguresLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

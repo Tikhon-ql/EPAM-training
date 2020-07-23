@@ -1,6 +1,0 @@
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.csprojAssemblyReference.cache
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.csproj.CoreCompileInputs.cache
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\bin\Debug\BoxLibrary.dll
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\bin\Debug\BoxLibrary.pdb
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.dll
-D:\Тихон\Git\EPAM-training\BoxLibrary\BoxLibrary\obj\Debug\BoxLibrary.pdb
