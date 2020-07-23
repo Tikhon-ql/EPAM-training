@@ -141,6 +141,11 @@ namespace PolinomialLibrary
                         res.Add(Math.Round(tmp[i] / p2.Coefficients[0],2));
                     }
                 }
+                res.RemoveAll(p=> p == 0);
+                if(res.Count == 0)
+                {
+                    return new Polynomial(0);
+                }
                 return new Polynomial(res.ToArray());
             }
             else
