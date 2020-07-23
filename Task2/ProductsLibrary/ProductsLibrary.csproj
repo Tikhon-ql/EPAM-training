@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\Product.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Models\ElectricalProducts.cs" />
     <Compile Include="Models\FoodProducts.cs" />
     <Compile Include="Models\StationeryProducts.cs" />
