@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ColorsLibrary;
@@ -160,12 +161,78 @@ namespace BoxLibrary.Tests
         public void GetSumS_Box_FilmTriangle_10_12_15_PaperSquare_10()
         {
             //arrange
-            Box box = new Box(new FilmTriangle(10,12,15), new PaperSquare(10));
+            Box box = new Box(new FilmTriangle(10, 12, 15), new PaperSquare(10));
             double expected = 159.81;
             //act
             double actual = box.GetSumS();
             //assert
             Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Проверка метода получения определенных фигур
+        /// </summary>
+        [TestMethod]
+        public void GetAllCircles_Box_PaperCircle_10_FilmSquare_10_FilmCircle_10_PaperRectangle_10_15()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(10), new FilmSquare(10),new FilmCircle(10),new PaperRectangle(10,15));
+            List<Figure> expected = new List<Figure> {new PaperCircle(10),new FilmCircle(10)};
+            //act
+            List<Figure> actual = box.GetExactFugire("Circle");
+            //assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Метод получения фигур по материалу (false - пленочные, true - бумажные)
+        /// </summary>
+        [TestMethod]
+        public void GetAllFilmFigures_Box_PaperCircle_10_FilmSquare_10_FilmCircle_10_PaperRectangle_10_15()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new FilmCircle(10), new PaperRectangle(10, 15));
+            List<Figure> expected = new List<Figure> { new FilmSquare(10), new FilmCircle(10) };
+            //act
+            List<Figure> actual = box.GetExactFigureByMaterial(false);
+ 
+            //assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Проверка метода сохранения данных в xml файл через XmlWriter
+        /// </summary>
+        [TestMethod]
+        public void SaveToXmlFile_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10,12,15,Colors.Red), new PaperRectangle(10, 20,Colors.Blue));
+            string filename = "test.xml";
+            string notxmlfilename = "test.txt";
+            string badfilename = "";
+            string nullfilename = null;
+            //act
+            bool actual = box.SaveFiguresXmlWriter(filename);
+
+            //assert
+            Assert.IsTrue(actual);
+            Assert.IsFalse(box.SaveFiguresXmlWriter(notxmlfilename));
+            Assert.IsFalse(box.SaveFiguresXmlWriter(badfilename));
+            Assert.IsFalse(box.SaveFiguresXmlWriter(nullfilename));
+        }
+        /// <summary>
+        /// Проверка метода сохранения фигур определённого материала (true - бумага, false - пленка) в xml файл через XmlWriter
+        /// </summary>
+        [TestMethod]
+        public void SaveToXmlFileByMaterial_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Blue));
+
+            string filename = "testbymat.xml";
+            //act
+            bool actual = box.SaveFiguresXmlWriter(filename,true);
+
+            //assert
+            Assert.IsTrue(actual);
         }
     }
 }

@@ -4,6 +4,8 @@ using FiguresLibrary.Models.PaperFigures;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ColorsLibrary;
 using ColorsLibrary.Exceptions;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace PaperFigure.Tests
 {
@@ -50,6 +52,28 @@ namespace PaperFigure.Tests
 
             Assert.AreEqual(expected, actual);
             Assert.ThrowsException<CannotPaintableException>(() => actual.Paint(Colors.Yellow));
+        }
+        /// <summary>
+        /// Проверка метода получения данных для аттрибутов xml
+        /// </summary>
+        [TestMethod]
+        public void AttributeXml_PaperCircle_15_FilmSquare_10()
+        {
+            //arrange
+            Dictionary<string, string> circleAttr = new Dictionary<string, string>();
+            Dictionary<string, string> sqAttr = new Dictionary<string, string>();
+            Dictionary<string, string> sqExpected = new Dictionary<string, string>();
+            Dictionary<string, string> circleExpected = new Dictionary<string, string>();
+            sqExpected.Add("side", "10");
+            sqExpected.Add("color", "Red");
+            circleExpected.Add("radius", "15");
+            circleExpected.Add("color", "Pink");
+            //act
+            circleAttr = new PaperCircle(15,Colors.Pink).AttributeXml();
+            sqAttr = new PaperSquare(10,Colors.Red).AttributeXml();
+            //assert
+            CollectionAssert.AreEqual(sqExpected, sqAttr);
+            CollectionAssert.AreEqual(circleExpected, circleAttr);
         }
     }
 }

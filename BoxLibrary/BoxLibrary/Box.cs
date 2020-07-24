@@ -4,6 +4,7 @@ using FiguresLibrary.Models.FilmFigures;
 using FiguresLibrary.Models.PaperFigures;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -165,12 +166,12 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="typename">Название типы получаемой фигуры</param>
         /// <returns></returns>
-        public List<Figure> GetExactrFugire(string typename)
+        public List<Figure> GetExactFugire(string typename)
         {
             List<Figure> res = new List<Figure>();
             foreach (KeyValuePair<int, Figure> item in figures)
             {
-                string itemTypename = item.GetType().Name.ToLower();
+                string itemTypename = item.Value.GetType().Name.ToLower();
                 string newTypename = typename.ToLower(); 
                 if (itemTypename.Contains(newTypename))
                     res.Add(item.Value);
@@ -203,7 +204,7 @@ namespace BoxLibrary
         {
             try
             {
-                if (filename == "" || filename.Split('.')[1] != "xml")
+                if (filename == "" || filename.Split('.')[1] != "xml" || filename == null)
                     throw new Exception();
                 using (XmlWriter writer = XmlWriter.Create(filename))
                 {
@@ -216,6 +217,7 @@ namespace BoxLibrary
                             writer.WriteAttributeString(pair.Key, pair.Value);
                         }
                         writer.WriteString(item.Value.XmlString());
+                        writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
                     writer.WriteEndDocument();
@@ -242,25 +244,15 @@ namespace BoxLibrary
                     writer.WriteStartElement("figures");
                     foreach (KeyValuePair<int, Figure> item in figures)
                     {
-                        if (material && item.Value is PaperFigure)
+                        if ((material && item.Value is PaperFigure) || (item.Value is FilmFigure && !material))
                         {
-                            continue;
-                        }
-                        else
-                        {
-                            if (item.Value is FilmFigure && !material)
+                            writer.WriteStartElement("Figure");
+                            foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
                             {
-                                continue;
+                                writer.WriteAttributeString(pair.Key, pair.Value);
                             }
-                            else
-                                break;
+                            writer.WriteString(item.Value.XmlString());
                         }
-                        writer.WriteStartElement("Figure");
-                        foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
-                        {
-                            writer.WriteAttributeString(pair.Key, pair.Value);
-                        }
-                        writer.WriteString(item.Value.XmlString());
                     }
                     writer.WriteEndElement();
                     writer.WriteEndDocument();
@@ -287,7 +279,8 @@ namespace BoxLibrary
                     {
                         if (reader.NodeType == XmlNodeType.Element)
                         {
-                            switch (reader.Value)
+                            string value = reader.ReadContentAsString();
+                            switch (value)
                             {
                                 case "PaperCircle":
                                     {

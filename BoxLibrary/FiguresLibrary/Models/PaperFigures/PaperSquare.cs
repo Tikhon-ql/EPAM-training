@@ -1,4 +1,5 @@
-﻿using ColorsLibrary.Exceptions;
+﻿using ColorsLibrary;
+using ColorsLibrary.Exceptions;
 using FiguresLibrary.Abstract;
 using FiguresLibrary.Exceptions;
 using System;
@@ -13,6 +14,10 @@ namespace FiguresLibrary.Models.PaperFigures
     public class PaperSquare : PaperFigure
     {
         public PaperSquare(double s)
+        {
+            Side = s;
+        }
+        public PaperSquare(double s ,Colors color):base(color)
         {
             Side = s;
         }

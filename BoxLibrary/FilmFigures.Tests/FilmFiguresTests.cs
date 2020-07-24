@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using System.Windows.Forms;
 using FiguresLibrary.Exceptions;
 using FiguresLibrary.Models.FilmFigures;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,6 +11,9 @@ namespace FilmFigures.Tests
     [TestClass]
     public class FilmFiguresTests
     {
+        /// <summary>
+        /// Проверка понструктора для вырезания одной фигуры из другой
+        /// </summary>
         [TestMethod]
         public void Cut_FilmCircle_5_from_FilmRectangle_10_20_and_FilmTringle_30_50_30_from_FilmSquare_10()
         {
@@ -21,6 +27,27 @@ namespace FilmFigures.Tests
             //assert
             Assert.AreEqual(expected, actual);
             Assert.ThrowsException<CannotCutableException>(() => triangle = new FilmTriangle(square, 30, 50, 30));
+        }
+        /// <summary>
+        /// Проверка метода получения данных для аттрибутов xml
+        /// </summary>
+        [TestMethod]
+        public void AttributeXml_FilmCircle_10_FilmRectanlge_10_20()
+        {
+            //arrange
+            Dictionary<string, string> circleAttr = new Dictionary<string, string>();
+            Dictionary<string, string> recAttr = new Dictionary<string, string>();
+            Dictionary<string, string> rectExpected = new Dictionary<string, string>();
+            Dictionary<string, string> circleExpected = new Dictionary<string, string>();
+            rectExpected.Add("width","20");
+            rectExpected.Add("height","10");
+            circleExpected.Add("radius","10");
+            //act
+            circleAttr = new FilmCircle(10).AttributeXml();
+            recAttr = new FilmRectangle(10,20).AttributeXml();
+            //assert
+            CollectionAssert.AreEqual(rectExpected, recAttr);
+            CollectionAssert.AreEqual(circleExpected, circleAttr);
         }
     }
 }
