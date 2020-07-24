@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace FiguresLibrary.Abstract
 {
-    public abstract class FilmFigure:Figure
+    public abstract class FilmFigure : Figure
     {
-
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

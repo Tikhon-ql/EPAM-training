@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoxTests.cs" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\BoxLibrary\BoxLibrary.csproj">
       <Project>{439f14ef-f6c6-40b0-8d05-d6c5141a35b0}</Project>
       <Name>BoxLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ColorsLibrary\ColorsLibrary.csproj">
+      <Project>{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}</Project>
+      <Name>ColorsLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\FiguresLibrary\FiguresLibrary.csproj">
       <Project>{9ec51462-7f4d-45de-a31e-ffac597f2f51}</Project>

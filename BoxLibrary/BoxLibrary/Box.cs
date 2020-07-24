@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace BoxLibrary
@@ -20,9 +21,21 @@ namespace BoxLibrary
         /// Максимальное количество фигур
         /// </summary>
         const int maxCount = 20;
+        public Box(params Figure[] figs)
+        {
+            if (figs.Length <= 20)
+            {
+                int i = 0;
+                for (i = 0; i < figs.Length; i++)
+                    figures.Add(i, figs[i]);
+                Count = i;
+            }
+            else
+                throw new Exception("В коробке нет места на такое количество фигур");
+        }
         /// <summary>
         /// Текущее количество фигур
-        /// </summary>
+        /// </summary>  
         public int Count { get; set; } = 0;
         /// <summary>
         /// список фигур
@@ -32,13 +45,31 @@ namespace BoxLibrary
         /// Метод добавления фигуры
         /// </summary>
         /// <param name="fig">Фигура</param>
-        public void AddFigure(Figure fig)
+        public bool AddFigure(Figure fig)
         {
             if (fig != null && Count != maxCount && Searche(fig) == null)
             {
                 figures.Add(Count, fig);
                 Count++;
+                return true;
             }
+            return false;
+        }
+        /// <summary>
+        /// Метод добавления фигуры
+        /// </summary>
+        /// <param name="fig">Фигура</param>
+        /// <param name="index">Место добавления</param>
+        /// <returns></returns>
+        public bool AddFigure(Figure fig,int index)
+        {
+            if (fig != null && Count != maxCount && Searche(fig) == null && !figures.ContainsKey(index))
+            {
+                figures.Add(index, fig);
+                Count++;
+                return true;
+            }
+            return false;
         }
         /// <summary>
         /// Метод просмотра фигуры
@@ -63,6 +94,7 @@ namespace BoxLibrary
             {
                 Figure res = figures.FirstOrDefault(i => i.Key == index).Value;
                 figures.Remove(index);
+                Count--;
                 return res;
             }
             else
@@ -73,13 +105,14 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="index">Индекс заменяемой фигуры</param>
         /// <param name="fig">Фигура, на которую заменяют</param>
-        public void Replace(int index, Figure fig)
+        public bool Replace(int index, Figure fig)
         {
             if (index < figures.Count)
             {
                 figures.Remove(index);
                 Count--;
-                AddFigure(fig);
+                AddFigure(fig,index);
+                return true;
             }
             else
                 throw new IndexOutOfRangeException();
@@ -91,7 +124,7 @@ namespace BoxLibrary
         /// <returns></returns>
         public Figure Searche(Figure fig)
         {
-            return figures.FirstOrDefault(f => f.Equals(fig)).Value;
+            return figures.FirstOrDefault(f => f.Value.P() == fig.P()).Value;
         }
         /// <summary>
         /// Метод получения(просмотра) всех фигур
@@ -112,7 +145,7 @@ namespace BoxLibrary
             {
                 s += item.Value.S();
             }
-            return s;
+            return Math.Round(s,2);
         }
         /// <summary>
         /// Метод получения суммарого периметра
@@ -125,7 +158,7 @@ namespace BoxLibrary
             {
                 p += item.Value.P();
             }
-            return p;
+            return Math.Round(p, 2);
         }
         /// <summary>
         /// Метод получения опеределенно фигуры
