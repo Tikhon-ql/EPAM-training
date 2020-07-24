@@ -20,7 +20,7 @@ namespace FiguresLibrary.Models.FilmFigures
             SecondSide = s;
             ThirdSide = t;
         }
-        public FilmTriangle(PaperFigure figure, double f, double s, double t)
+        public FilmTriangle(FilmFigure figure, double f, double s, double t)
         {
             FirstSide = f;
             SecondSide = s;

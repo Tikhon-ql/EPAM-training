@@ -10,10 +10,14 @@ using FiguresLibrary.Exceptions;
 
 namespace FiguresLibrary.Models.PaperFigures
 {
-    public class PaperCircle:PaperFigure
+    public class PaperCircle : PaperFigure
     {
         public double R { get; set; }
-        public PaperCircle(double r, Colors color) : base( color)
+        public PaperCircle(double r, Colors color) : base(color)
+        {
+            R = r;
+        }
+        public PaperCircle(double r):base()
         {
             R = r;
         }

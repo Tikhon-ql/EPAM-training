@@ -1,4 +1,7 @@
-﻿using FiguresLibrary.Abstract;
+﻿using ColorsLibrary;
+using FiguresLibrary.Abstract;
+using FiguresLibrary.Models.FilmFigures;
+using FiguresLibrary.Models.PaperFigures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +34,7 @@ namespace BoxLibrary
         /// <param name="fig">Фигура</param>
         public void AddFigure(Figure fig)
         {
-            if (fig != null && Count != maxCount && Searche(fig).Count == 0)
+            if (fig != null && Count != maxCount && Searche(fig) == null)
             {
                 figures.Add(Count, fig);
                 Count++;
@@ -54,7 +57,7 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="index">Индекс фигуры</param>
         /// <returns></returns>
-        public Figure GetFigure(int index)
+        public Figure PopFigure(int index)
         {
             if (index < figures.Count)
             {
@@ -75,6 +78,7 @@ namespace BoxLibrary
             if (index < figures.Count)
             {
                 figures.Remove(index);
+                Count--;
                 AddFigure(fig);
             }
             else
@@ -85,9 +89,9 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="fig">Шаблон фигуры</param>
         /// <returns></returns>
-        public List<Figure> Searche(Figure fig)
+        public Figure Searche(Figure fig)
         {
-            return figures.Where(f => f.Equals(fig)).Select(f => f.Value).ToList();
+            return figures.FirstOrDefault(f => f.Equals(fig)).Value;
         }
         /// <summary>
         /// Метод получения(просмотра) всех фигур
@@ -133,7 +137,9 @@ namespace BoxLibrary
             List<Figure> res = new List<Figure>();
             foreach (KeyValuePair<int, Figure> item in figures)
             {
-                if (item.GetType().Name == typename)
+                string itemTypename = item.GetType().Name.ToLower();
+                string newTypename = typename.ToLower(); 
+                if (itemTypename.Contains(newTypename))
                     res.Add(item.Value);
             }
             return res;
@@ -168,10 +174,10 @@ namespace BoxLibrary
                     throw new Exception();
                 using (XmlWriter writer = XmlWriter.Create(filename))
                 {
-                    writer.WriteStartElement("figures");
+                    writer.WriteStartElement("Figures");
                     foreach (KeyValuePair<int, Figure> item in figures)
                     {
-                        writer.WriteStartElement("figure");
+                        writer.WriteStartElement("Figure");
                         foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
                         {
                             writer.WriteAttributeString(pair.Key, pair.Value);
@@ -192,37 +198,47 @@ namespace BoxLibrary
         /// Метод сохраняющий фигуры из определенного материала в xml файл
         /// </summary>
         /// <param name="filename">имя файла</param>
-        /// <param name="material">заданный материал</param>
+        /// <param name="material">заданный материал(если true, то бумага, если false, то пленка)</param>
         /// <returns></returns>
-        //public bool SaveFiguresXmlWriter(string filename, Material material)
-        //{
-        //    try
-        //    {
-        //        using (XmlWriter writer = XmlWriter.Create(filename))
-        //        {
-        //            writer.WriteStartElement("figures");
-        //            foreach (KeyValuePair<int, Figure> item in figures)
-        //            {
-        //                if (item.Value.Material == material)
-        //                {
-        //                    writer.WriteStartElement("figure");
-        //                    foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
-        //                    {
-        //                        writer.WriteAttributeString(pair.Key, pair.Value);
-        //                    }
-        //                    writer.WriteString(item.Value.XmlString());
-        //                }
-        //            }
-        //            writer.WriteEndElement();
-        //            writer.WriteEndDocument();
-        //        }
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool SaveFiguresXmlWriter(string filename, bool material)
+        {
+            try
+            {
+                using (XmlWriter writer = XmlWriter.Create(filename))
+                {
+                    writer.WriteStartElement("figures");
+                    foreach (KeyValuePair<int, Figure> item in figures)
+                    {
+                        if (material && item.Value is PaperFigure)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if (item.Value is FilmFigure && !material)
+                            {
+                                continue;
+                            }
+                            else
+                                break;
+                        }
+                        writer.WriteStartElement("Figure");
+                        foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
+                        {
+                            writer.WriteAttributeString(pair.Key, pair.Value);
+                        }
+                        writer.WriteString(item.Value.XmlString());
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Метод получения фигур из xml файла
         /// </summary>
@@ -240,45 +256,75 @@ namespace BoxLibrary
                         {
                             switch (reader.Value)
                             {
-                                //case "Circle":
-                                //    {
-                                //        Circle circle = new Circle();
-                                //        circle.R = double.Parse(reader.GetAttribute("radius"));
-                                //        circle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
-                                //        circle.Material = (Material)Enum.Parse(typeof(Material), reader.GetAttribute("material"));
-                                //        this.AddFigure(circle);
-                                //        break;
-                                //    }
-                                  
-                                //case "Rectangle":
-                                //    {
-                                //        Rectangle rectangle = new Rectangle();
-                                //        rectangle.Width = double.Parse(reader.GetAttribute("width"));
-                                //        rectangle.Height = double.Parse(reader.GetAttribute("height"));
-                                //        rectangle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
-                                //        this.AddFigure(rectangle);
-                                //        break;
-                                //    }
-                                   
-                                //case "Triangle":
-                                //    {
-                                //        Triangle triangle = new Triangle();
-                                //        triangle.FirstSide = double.Parse(reader.GetAttribute("first"));
-                                //        triangle.SecondSide = double.Parse(reader.GetAttribute("second"));
-                                //        triangle.ThirdSide = double.Parse(reader.GetAttribute("third"));
-                                //        triangle.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
-                                //        this.AddFigure(triangle);
-                                //        break;
-                                //    }
-                                   
-                                //case "Square":
-                                //    {
-                                //        Square square = new Square();
-                                //        square.Side = double.Parse(reader.GetAttribute("side"));
-                                //        square.Color = (Color)Enum.Parse(typeof(Color), reader.GetAttribute("color"));
-                                //        this.AddFigure(square);
-                                //        break;
-                                //    }
+                                case "PaperCircle":
+                                    {
+                                        PaperCircle circle = new PaperCircle();
+                                        circle.R = double.Parse(reader.GetAttribute("radius"));
+                                        circle.Color = (Colors)Enum.Parse(typeof(Colors), reader.GetAttribute("color"));
+                                        this.AddFigure(circle);
+                                        break;
+                                    }
+
+                                case "PaperRectangle":
+                                    {
+                                        PaperRectangle rectangle = new PaperRectangle();
+                                        rectangle.Width = double.Parse(reader.GetAttribute("width"));
+                                        rectangle.Height = double.Parse(reader.GetAttribute("height"));
+                                        rectangle.Color = (Colors)Enum.Parse(typeof(Colors), reader.GetAttribute("color"));
+                                        this.AddFigure(rectangle);
+                                        break;
+                                    }
+
+                                case "PaperTriangle":
+                                    {
+                                        PaperTriangle triangle = new PaperTriangle();
+                                        triangle.FirstSide = double.Parse(reader.GetAttribute("first"));
+                                        triangle.SecondSide = double.Parse(reader.GetAttribute("second"));
+                                        triangle.ThirdSide = double.Parse(reader.GetAttribute("third"));
+                                        triangle.Color = (Colors)Enum.Parse(typeof(Colors), reader.GetAttribute("color"));
+                                        this.AddFigure(triangle);
+                                        break;
+                                    }
+
+                                case "PaperSquare":
+                                    {
+                                        PaperSquare square = new PaperSquare();
+                                        square.Side = double.Parse(reader.GetAttribute("side"));
+                                        square.Color = (Colors)Enum.Parse(typeof(Colors), reader.GetAttribute("color"));
+                                        this.AddFigure(square);
+                                        break;
+                                    }
+                                case "FilmSquare":
+                                    {
+                                        FilmSquare square = new FilmSquare();
+                                        square.Side = double.Parse(reader.GetAttribute("side"));
+                                        this.AddFigure(square);
+                                        break;
+                                    }
+                                case "FilmCircle":
+                                    {
+                                        FilmCircle circle = new FilmCircle();
+                                        circle.R = double.Parse(reader.GetAttribute("radius"));
+                                        this.AddFigure(circle);
+                                        break;
+                                    }
+                                case "FilmRectangle":
+                                    {
+                                        FilmRectangle rectangle = new FilmRectangle();
+                                        rectangle.Width = double.Parse(reader.GetAttribute("width"));
+                                        rectangle.Height = double.Parse(reader.GetAttribute("height"));
+                                        this.AddFigure(rectangle);
+                                        break;
+                                    }
+                                case "FilmTriangle":
+                                    {
+                                        FilmTriangle triangle = new FilmTriangle();
+                                        triangle.FirstSide = double.Parse(reader.GetAttribute("first"));
+                                        triangle.SecondSide = double.Parse(reader.GetAttribute("second"));
+                                        triangle.ThirdSide = double.Parse(reader.GetAttribute("third"));
+                                        this.AddFigure(triangle);
+                                        break;
+                                    }
                             }
                         }
 

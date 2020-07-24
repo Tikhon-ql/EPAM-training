@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BoxLibrary</RootNamespace>
     <AssemblyName>BoxLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ColorsLibrary\ColorsLibrary.csproj">
+      <Project>{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}</Project>
+      <Name>ColorsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FiguresLibrary\FiguresLibrary.csproj">
       <Project>{9EC51462-7F4D-45DE-A31E-FFAC597F2F51}</Project>
       <Name>FiguresLibrary</Name>

@@ -1,13 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxLibrary", "BoxLibrary\BoxLibrary.csproj", "{439F14EF-F6C6-40B0-8D05-D6C5141A35B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiguresLibrary", "FiguresLibrary\FiguresLibrary.csproj", "{9EC51462-7F4D-45DE-A31E-FFAC597F2F51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorsLibrary", "ColorsLibrary\ColorsLibrary.csproj", "{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{91D48211-EA95-4368-BC7A-2EA333CC0A65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FiguresUnitTests", "FiguresUnitTests", "{FA1FC5B2-3FCA-4D58-9076-C28FD9253831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmFigures.Tests", "FilmFigures.Tests\FilmFigures.Tests.csproj", "{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperFigure.Tests", "PaperFigure.Tests\PaperFigure.Tests.csproj", "{8DF3E711-9546-4DB9-9769-D357D8DCBCAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoxUnitTests", "BoxUnitTests", "{4FA81537-4A0D-4128-8886-1E6DB4D6B394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxLibrary.Tests", "BoxLibrary.Tests\BoxLibrary.Tests.csproj", "{B8874AF3-CB9F-4272-A310-DEC59858D63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +39,28 @@ Global
 		{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E5023FD-AAF5-48F9-9AFF-F5F7916B0CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF3E711-9546-4DB9-9769-D357D8DCBCAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF3E711-9546-4DB9-9769-D357D8DCBCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF3E711-9546-4DB9-9769-D357D8DCBCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF3E711-9546-4DB9-9769-D357D8DCBCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8874AF3-CB9F-4272-A310-DEC59858D63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8874AF3-CB9F-4272-A310-DEC59858D63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8874AF3-CB9F-4272-A310-DEC59858D63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8874AF3-CB9F-4272-A310-DEC59858D63C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA1FC5B2-3FCA-4D58-9076-C28FD9253831} = {91D48211-EA95-4368-BC7A-2EA333CC0A65}
+		{333B4CB6-3DB7-47A7-8492-FAF4F1A2D8DA} = {FA1FC5B2-3FCA-4D58-9076-C28FD9253831}
+		{8DF3E711-9546-4DB9-9769-D357D8DCBCAB} = {FA1FC5B2-3FCA-4D58-9076-C28FD9253831}
+		{4FA81537-4A0D-4128-8886-1E6DB4D6B394} = {91D48211-EA95-4368-BC7A-2EA333CC0A65}
+		{B8874AF3-CB9F-4272-A310-DEC59858D63C} = {4FA81537-4A0D-4128-8886-1E6DB4D6B394}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {080450A7-DC7C-4CAB-A74D-4A204E604192}
