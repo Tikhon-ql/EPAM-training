@@ -29,7 +29,7 @@ namespace FilmFigures.Tests
             Assert.ThrowsException<CannotCutableException>(() => triangle = new FilmTriangle(square, 30, 50, 30));
         }
         /// <summary>
-        /// Проверка метода получения данных для аттрибутов xml
+        /// Проверка метода получения данных для атрибутов xml
         /// </summary>
         [TestMethod]
         public void AttributeXml_FilmCircle_10_FilmRectanlge_10_20()

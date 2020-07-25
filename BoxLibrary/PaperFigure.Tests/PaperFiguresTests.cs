@@ -54,7 +54,7 @@ namespace PaperFigure.Tests
             Assert.ThrowsException<CannotPaintableException>(() => actual.Paint(Colors.Yellow));
         }
         /// <summary>
-        /// Проверка метода получения данных для аттрибутов xml
+        /// Проверка метода получения данных для атрибутов xml
         /// </summary>
         [TestMethod]
         public void AttributeXml_PaperCircle_15_FilmSquare_10()

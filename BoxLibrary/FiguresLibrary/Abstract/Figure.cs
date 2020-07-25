@@ -39,7 +39,7 @@ namespace FiguresLibrary.Abstract
             return base.GetHashCode();
         }
         /// <summary>
-        /// Метод для подговки аттрибутов xml
+        /// Метод для подговки атрибутов xml
         /// </summary>
         /// <returns></returns>
         public abstract Dictionary<string, string> AttributeXml();
