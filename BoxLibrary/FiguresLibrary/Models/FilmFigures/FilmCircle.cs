@@ -15,10 +15,15 @@ namespace FiguresLibrary.Models.FilmFigures
         {
             R = r;
         }
-        public FilmCircle(Figure fig, int r)
+        /// <summary>
+        /// Конструктор для вырезания из другой фигуры
+        /// </summary>
+        /// <param name="fig">Фигура, из которой вырезаем</param>
+        /// <param name="r">радиус</param>
+        public FilmCircle(FilmFigure fig, int r)
         {
             R = r;
-            if(S() > fig.S())
+            if(this.S() > fig.S())
                 throw new CannotCutableException("Невозможно вырезать фигуру");
         }
         public FilmCircle()
@@ -55,14 +60,11 @@ namespace FiguresLibrary.Models.FilmFigures
         {
             return -51877379 + R.GetHashCode();
         }
-        public override string XmlString()
-        {
-            return "FilmCircle";
-        }
         public override Dictionary<string, string> AttributeXml()
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("radius", R.ToString());
+            dictionary.Add("type", "FilmCircle");
             return dictionary;
         }
     }

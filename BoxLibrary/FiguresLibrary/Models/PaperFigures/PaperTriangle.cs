@@ -77,11 +77,8 @@ namespace FiguresLibrary.Models.PaperFigures
             dictionary.Add("second", SecondSide.ToString());
             dictionary.Add("third", ThirdSide.ToString());
             dictionary.Add("color", Color.ToString());
+            dictionary.Add("type", "PaperTriangle");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "PaperTriangle";
         }
     }
 }

@@ -60,11 +60,8 @@ namespace FiguresLibrary.Models.PaperFigures
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("side", Side.ToString());
             dictionary.Add("color", Color.ToString());
+            dictionary.Add("type", "PaperSquare");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "PaperSquare";
         }
     }
 }

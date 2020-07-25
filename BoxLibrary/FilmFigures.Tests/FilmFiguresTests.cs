@@ -41,7 +41,9 @@ namespace FilmFigures.Tests
             Dictionary<string, string> circleExpected = new Dictionary<string, string>();
             rectExpected.Add("width","20");
             rectExpected.Add("height","10");
+            rectExpected.Add("type", "FilmRectangle");
             circleExpected.Add("radius","10");
+            circleExpected.Add("type","FilmCircle");
             //act
             circleAttr = new FilmCircle(10).AttributeXml();
             recAttr = new FilmRectangle(10,20).AttributeXml();

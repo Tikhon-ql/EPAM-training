@@ -14,11 +14,14 @@ namespace FiguresLibrary.Abstract
         public PaperFigure()
         {
 
-        }
+        }   
         public PaperFigure(Colors color)
         {
             Color = color;
         }
+        /// <summary>
+        /// Свойство покрашена ли фигура
+        /// </summary>
         public bool IsPainted { get; set; } = false;
         public Colors Color { get; set; } = Colors.White;
 
@@ -35,7 +38,10 @@ namespace FiguresLibrary.Abstract
             hashCode = hashCode * -1521134295 + Color.GetHashCode();
             return hashCode;
         }
-
+        /// <summary>
+        /// Метод перекрашивания бумажной фигуры
+        /// </summary>
+        /// <param name="color"></param>
         public void Paint(Colors color)
         {
             if (!IsPainted)

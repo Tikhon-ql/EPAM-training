@@ -9,10 +9,6 @@ namespace FiguresLibrary.Abstract
     abstract public class Figure
     {
     
-        public Figure()
-        {
-
-        }
         /// <summary>
         /// Метод нахождения площади фигуры
         /// </summary>
@@ -42,11 +38,6 @@ namespace FiguresLibrary.Abstract
         {
             return base.GetHashCode();
         }
-        /// <summary>
-        /// Метод для подговки содержимого тега
-        /// </summary>
-        /// <returns></returns>
-        public abstract string XmlString();
         /// <summary>
         /// Метод для подговки аттрибутов xml
         /// </summary>

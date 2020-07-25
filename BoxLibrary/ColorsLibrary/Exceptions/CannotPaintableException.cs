@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ColorsLibrary.Exceptions
 {
     /// <summary>
-    /// Усключения, 
+    /// Усключения невозможности перекрасить фигуру
     /// </summary>
     public class CannotPaintableException: Exception
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.960
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxLibrary", "BoxLibrary\BoxLibrary.csproj", "{439F14EF-F6C6-40B0-8D05-D6C5141A35B0}"
 EndProject
@@ -20,6 +20,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BoxUnitTests", "BoxUnitTests", "{4FA81537-4A0D-4128-8886-1E6DB4D6B394}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxLibrary.Tests", "BoxLibrary.Tests\BoxLibrary.Tests.csproj", "{B8874AF3-CB9F-4272-A310-DEC59858D63C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{D7AE7DC9-15EA-42DD-880F-679B17676A3E}"
+	ProjectSection(SolutionItems) = preProject
+		BoxLibrary.Tests\bin\Debug\filmfigures.xml = BoxLibrary.Tests\bin\Debug\filmfigures.xml
+		BoxLibrary.Tests\bin\Debug\paperfigures.xml = BoxLibrary.Tests\bin\Debug\paperfigures.xml
+		BoxLibrary.Tests\bin\Debug\test.xml = BoxLibrary.Tests\bin\Debug\test.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

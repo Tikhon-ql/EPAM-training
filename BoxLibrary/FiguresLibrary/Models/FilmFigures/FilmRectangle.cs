@@ -62,11 +62,8 @@ namespace FiguresLibrary.Models.FilmFigures
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("width", Width.ToString());
             dictionary.Add("height", Height.ToString());
+            dictionary.Add("type", "FilmRectangle");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "FilmRectangle";
         }
     }
 }

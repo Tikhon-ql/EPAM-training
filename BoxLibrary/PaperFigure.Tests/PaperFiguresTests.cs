@@ -66,8 +66,10 @@ namespace PaperFigure.Tests
             Dictionary<string, string> circleExpected = new Dictionary<string, string>();
             sqExpected.Add("side", "10");
             sqExpected.Add("color", "Red");
+            sqExpected.Add("type", "PaperSquare");
             circleExpected.Add("radius", "15");
             circleExpected.Add("color", "Pink");
+            circleExpected.Add("type", "PaperCircle");
             //act
             circleAttr = new PaperCircle(15,Colors.Pink).AttributeXml();
             sqAttr = new PaperSquare(10,Colors.Red).AttributeXml();

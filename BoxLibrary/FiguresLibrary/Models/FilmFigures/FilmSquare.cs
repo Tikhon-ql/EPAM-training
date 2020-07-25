@@ -54,11 +54,8 @@ namespace FiguresLibrary.Models.FilmFigures
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("side", Side.ToString());
+            dictionary.Add("type", "FilmSquare");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "FilmSquare";
         }
     }
 }

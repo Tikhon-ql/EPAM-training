@@ -70,11 +70,8 @@ namespace FiguresLibrary.Models.PaperFigures
             dictionary.Add("width", Width.ToString());
             dictionary.Add("height", Height.ToString());
             dictionary.Add("color", Color.ToString());
+            dictionary.Add("type", "PaperRectangle");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "PaperRectangle";
         }
     }
 }

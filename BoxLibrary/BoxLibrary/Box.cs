@@ -1,4 +1,6 @@
-﻿using ColorsLibrary;
+﻿
+using BoxLibrary.Enums;
+using ColorsLibrary;
 using FiguresLibrary.Abstract;
 using FiguresLibrary.Models.FilmFigures;
 using FiguresLibrary.Models.PaperFigures;
@@ -28,7 +30,8 @@ namespace BoxLibrary
             {
                 int i = 0;
                 for (i = 0; i < figs.Length; i++)
-                    figures.Add(i, figs[i]);
+                    if(Search(figs[i]) == null)
+                        figures.Add(i, figs[i]);
                 Count = i;
             }
             else
@@ -48,7 +51,7 @@ namespace BoxLibrary
         /// <param name="fig">Фигура</param>
         public bool AddFigure(Figure fig)
         {
-            if (fig != null && Count != maxCount && Searche(fig) == null)
+            if (fig != null && Count != maxCount && Search(fig) == null)
             {
                 figures.Add(Count, fig);
                 Count++;
@@ -64,7 +67,7 @@ namespace BoxLibrary
         /// <returns></returns>
         public bool AddFigure(Figure fig,int index)
         {
-            if (fig != null && Count != maxCount && Searche(fig) == null && !figures.ContainsKey(index))
+            if (fig != null && Search(fig) == null && !figures.ContainsKey(index))
             {
                 figures.Add(index, fig);
                 Count++;
@@ -85,7 +88,7 @@ namespace BoxLibrary
                 throw new IndexOutOfRangeException();
         }
         /// <summary>
-        /// Метод получения фигуры
+        /// Метод извлечения фигуры
         /// </summary>
         /// <param name="index">Индекс фигуры</param>
         /// <returns></returns>
@@ -110,9 +113,14 @@ namespace BoxLibrary
         {
             if (index < figures.Count)
             {
+                Figure figure = figures.FirstOrDefault(f=>f.Key == index).Value;
                 figures.Remove(index);
                 Count--;
-                AddFigure(fig,index);
+                //если не удалось добавить фигуру возвращаем предыдущую
+                if (!AddFigure(fig, index))
+                {
+                     AddFigure(figure, index);
+                }
                 return true;
             }
             else
@@ -123,9 +131,17 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="fig">Шаблон фигуры</param>
         /// <returns></returns>
-        public Figure Searche(Figure fig)
+        public Figure Search(Figure fig)
         {
-            return figures.FirstOrDefault(f => f.Value.P() == fig.P()).Value;
+            if(fig is PaperFigure)
+            {
+                return figures.FirstOrDefault(f => f.Value.P() == fig.P() && f.Value.S() == fig.S() && ((PaperFigure)f.Value).Color == ((PaperFigure)fig).Color).Value;
+            }
+            else
+            {
+                return figures.FirstOrDefault(f => f.Value.P() == fig.P() && f.Value.S() == fig.S()).Value;
+            }
+           
         }
         /// <summary>
         /// Метод получения(просмотра) всех фигур
@@ -166,93 +182,73 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="typename">Название типы получаемой фигуры</param>
         /// <returns></returns>
-        public List<Figure> GetExactFugire(string typename)
+        public List<Figure> GetCircle()
         {
-            List<Figure> res = new List<Figure>();
-            foreach (KeyValuePair<int, Figure> item in figures)
+            try
             {
-                string itemTypename = item.Value.GetType().Name.ToLower();
-                string newTypename = typename.ToLower(); 
-                if (itemTypename.Contains(newTypename))
-                    res.Add(item.Value);
+                List<Figure> res = new List<Figure>();
+                foreach (KeyValuePair<int, Figure> item in figures)
+                {
+                    if (item.Value is PaperCircle || item.Value is FilmCircle)
+                        res.Add(item.Value);
+                }
+                return res;
             }
-            return res;
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         /// <summary>
-        /// Метод получения фигуры определенного материала
+        /// Метод получения пленочных фигуры 
         /// </summary>
-        /// <param name="material">Если true - бумажный, если false - пленочный</param>
         /// <returns></returns>
-        public List<Figure> GetExactFigureByMaterial(bool material)
+        public List<Figure> GetFilmFigures()
         {
-            List<Figure> res = new List<Figure>();
-            foreach (KeyValuePair<int, Figure> item in figures)
-            {
-                if (material && item.Value is PaperFigure)
-                    res.Add(item.Value);
-                if(!material && item.Value is FilmFigure)
-                    res.Add(item.Value);
-            }
-            return res;
+            return figures.Where(f => f.Value is FilmFigure).Select(f=>f.Value).ToList();
         }
         /// <summary>
         /// Метод сохраняющий все фигуры в xml файл
         /// </summary>
         /// <param name="filename">имя файла</param>
         /// <returns></returns>
-        public bool SaveFiguresXmlWriter(string filename)
+        /// ////////////////////////////////////////////////////////////
+        public bool SaveFiguresXmlWriter(string filename,SaveType saveType = SaveType.AllFigures)
         {
             try
             {
-                if (filename == "" || filename.Split('.')[1] != "xml" || filename == null)
+                if (filename == "" || filename == null)
                     throw new Exception();
+                List<Figure> saveFigures = new List<Figure>();
+                switch (saveType) 
+                {
+                    case SaveType.AllFigures:
+                        {
+                            saveFigures = figures.Values.ToList();
+                            break;
+                        }
+                    case SaveType.FilmFigures:
+                        {
+                            saveFigures = GetFilmFigures();
+                            break;
+                        }
+                    case SaveType.PaperFigures:
+                        {
+                            saveFigures = figures.Where(f => f.Value is PaperFigure).Select(f => f.Value).ToList();
+                            break;
+                        }
+                }
                 using (XmlWriter writer = XmlWriter.Create(filename))
                 {
                     writer.WriteStartElement("Figures");
-                    foreach (KeyValuePair<int, Figure> item in figures)
+                    foreach (Figure item in saveFigures)
                     {
                         writer.WriteStartElement("Figure");
-                        foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
+                        foreach (KeyValuePair<string, string> pair in item.AttributeXml())
                         {
                             writer.WriteAttributeString(pair.Key, pair.Value);
                         }
-                        writer.WriteString(item.Value.XmlString());
                         writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
-                    writer.WriteEndDocument();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        /// <summary>
-        /// Метод сохраняющий фигуры из определенного материала в xml файл
-        /// </summary>
-        /// <param name="filename">имя файла</param>
-        /// <param name="material">заданный материал(если true, то бумага, если false, то пленка)</param>
-        /// <returns></returns>
-        public bool SaveFiguresXmlWriter(string filename, bool material)
-        {
-            try
-            {
-                using (XmlWriter writer = XmlWriter.Create(filename))
-                {
-                    writer.WriteStartElement("figures");
-                    foreach (KeyValuePair<int, Figure> item in figures)
-                    {
-                        if ((material && item.Value is PaperFigure) || (item.Value is FilmFigure && !material))
-                        {
-                            writer.WriteStartElement("Figure");
-                            foreach (KeyValuePair<string, string> pair in item.Value.AttributeXml())
-                            {
-                                writer.WriteAttributeString(pair.Key, pair.Value);
-                            }
-                            writer.WriteString(item.Value.XmlString());
-                        }
                     }
                     writer.WriteEndElement();
                     writer.WriteEndDocument();
@@ -269,18 +265,19 @@ namespace BoxLibrary
         /// </summary>
         /// <param name="filename">Имя файла</param>
         /// <returns></returns>
+        /// ////////////////////////
         public bool LoadFiguresXmlReader(string filename)
         {
             try
             {
                 using (XmlReader reader = XmlReader.Create(filename))
                 {
+
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element)
                         {
-                            string value = reader.ReadContentAsString();
-                            switch (value)
+                            switch (reader.GetAttribute("type"))
                             {
                                 case "PaperCircle":
                                     {
@@ -353,7 +350,6 @@ namespace BoxLibrary
                                     }
                             }
                         }
-
                     }
                 }
                 return true;
@@ -368,7 +364,7 @@ namespace BoxLibrary
         {
             return obj is Box box &&
                    Count == box.Count &&
-                   EqualityComparer<Dictionary<int, Figure>>.Default.Equals(figures, box.figures);
+                   Equals(figures, box.figures);
         }
 
         public override int GetHashCode()

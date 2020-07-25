@@ -68,11 +68,8 @@ namespace FiguresLibrary.Models.FilmFigures
             dictionary.Add("first", FirstSide.ToString());
             dictionary.Add("second", SecondSide.ToString());
             dictionary.Add("third", ThirdSide.ToString());
+            dictionary.Add("type", "FilmTriangle");
             return dictionary;
-        }
-        public override string XmlString()
-        {
-            return "FilmTriangle";
         }
     }
 }

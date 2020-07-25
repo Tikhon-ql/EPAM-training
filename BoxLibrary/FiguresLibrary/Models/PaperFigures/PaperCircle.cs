@@ -17,7 +17,7 @@ namespace FiguresLibrary.Models.PaperFigures
         {
             R = r;
         }
-        public PaperCircle(double r):base()
+        public PaperCircle(double r)
         {
             R = r;
         }
@@ -62,15 +62,12 @@ namespace FiguresLibrary.Models.PaperFigures
         {
             return -51877379 + R.GetHashCode();
         }
-        public override string XmlString()
-        {
-            return "PaperCircle";
-        }
         public override Dictionary<string, string> AttributeXml()
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("radius", R.ToString());
             dictionary.Add("color", Color.ToString());
+            dictionary.Add("type", "PaperCircle");
             return dictionary;
         }
     }
