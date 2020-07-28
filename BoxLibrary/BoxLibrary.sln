@@ -24,8 +24,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{D7AE7DC9-15EA-42DD-880F-679B17676A3E}"
 	ProjectSection(SolutionItems) = preProject
 		BoxLibrary.Tests\bin\Debug\filmfigures.xml = BoxLibrary.Tests\bin\Debug\filmfigures.xml
+		BoxLibrary.Tests\bin\Debug\filmfiguresStreamWriter.xml = BoxLibrary.Tests\bin\Debug\filmfiguresStreamWriter.xml
 		BoxLibrary.Tests\bin\Debug\paperfigures.xml = BoxLibrary.Tests\bin\Debug\paperfigures.xml
+		BoxLibrary.Tests\bin\Debug\paperfiguresStreamWriter.xml = BoxLibrary.Tests\bin\Debug\paperfiguresStreamWriter.xml
 		BoxLibrary.Tests\bin\Debug\test.xml = BoxLibrary.Tests\bin\Debug\test.xml
+		BoxLibrary.Tests\bin\Debug\testStreamWriter.xml = BoxLibrary.Tests\bin\Debug\testStreamWriter.xml
 	EndProjectSection
 EndProject
 Global

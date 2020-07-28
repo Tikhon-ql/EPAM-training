@@ -9,6 +9,9 @@ using ColorsLibrary.Exceptions;
 
 namespace FiguresLibrary.Abstract
 {
+    /// <summary>
+    /// Paper figures's class
+    /// </summary>
     public abstract class PaperFigure:Figure
     {
         public PaperFigure()
@@ -20,7 +23,7 @@ namespace FiguresLibrary.Abstract
             Color = color;
         }
         /// <summary>
-        /// Свойство покрашена ли фигура
+        /// Figure is painted property
         /// </summary>
         public bool IsPainted { get; set; } = false;
         public Colors Color { get; set; } = Colors.White;
@@ -39,7 +42,7 @@ namespace FiguresLibrary.Abstract
             return hashCode;
         }
         /// <summary>
-        /// Метод перекрашивания бумажной фигуры
+        /// Coloring paper figure method
         /// </summary>
         /// <param name="color"></param>
         public void Paint(Colors color)

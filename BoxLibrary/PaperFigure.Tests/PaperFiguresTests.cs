@@ -13,7 +13,7 @@ namespace PaperFigure.Tests
     public class PaperFiguresTests
     {
         /// <summary>
-        /// Прокерка вырезания одной фигуры из другой
+        /// Checking a constructor to cut one figure from another
         /// </summary>
         [TestMethod]
         public void Cut_PaperCircle_7_from_PaperSqaure_20_and_PaperTringle_30_50_30_from_PaperRectangle_14_12()
@@ -35,7 +35,7 @@ namespace PaperFigure.Tests
             Assert.ThrowsException<CannotCutableException>(() => triangle = new PaperTriangle(square, 30, 50, 30));
         }
         /// <summary>
-        /// Проверка метода закрашивания бумажной фигуры
+        /// Checking a method painting a paper figure
         /// </summary>
         [TestMethod]
         public void Paint_PaperCircle_7_Red_PaperCircle_7_Green_returned_and_PaperCircle_7_Green_CannotPaintableException_returned()
@@ -54,7 +54,7 @@ namespace PaperFigure.Tests
             Assert.ThrowsException<CannotPaintableException>(() => actual.Paint(Colors.Yellow));
         }
         /// <summary>
-        /// Проверка метода получения данных для атрибутов xml
+        ///  Checking a method to get data fom xml attributes 
         /// </summary>
         [TestMethod]
         public void AttributeXml_PaperCircle_15_FilmSquare_10()

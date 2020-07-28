@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FiguresLibrary.Abstract
 {
+    /// <summary>
+    /// Film figures's class
+    /// </summary>
     public abstract class FilmFigure : Figure
     {
         public override bool Equals(object obj)

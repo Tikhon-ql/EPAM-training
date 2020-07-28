@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoxLibrary.Enums
 {
     /// <summary>
-    /// Перечисление видов сохранения фигур
+    /// Figures save type enumeration
     /// </summary>
     public enum SaveType
     {

@@ -10,12 +10,12 @@ namespace FiguresLibrary.Abstract
     {
     
         /// <summary>
-        /// Метод нахождения площади фигуры
+        /// Get square method
         /// </summary>
         /// <returns></returns>
         public abstract double S();
         /// <summary>
-        /// Метод нахождения периметра фигуры
+        /// Get perimetr method
         /// </summary>
         /// <returns></returns>
         public abstract double P();
@@ -39,7 +39,7 @@ namespace FiguresLibrary.Abstract
             return base.GetHashCode();
         }
         /// <summary>
-        /// Метод для подговки атрибутов xml
+        /// Preparing xml attributes method
         /// </summary>
         /// <returns></returns>
         public abstract Dictionary<string, string> AttributeXml();

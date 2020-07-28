@@ -24,7 +24,7 @@ namespace FiguresLibrary.Models.FilmFigures
             if(this.S() > figure.S())
                 throw new CannotCutableException("Невозможно вырезать фигуру");
         }
-        // сторона квадрата
+        // side of square
         public double Side { get; set; } = 0;
 
         public override bool Equals(object obj)

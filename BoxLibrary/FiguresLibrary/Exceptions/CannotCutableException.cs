@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FiguresLibrary.Exceptions
 {
     /// <summary>
-    /// Исключения невозможности вырезать одну фигуру из другой
+    /// Exceptions of the impossibility of cutting one figure from another
     /// </summary>
     public class CannotCutableException:Exception
     {

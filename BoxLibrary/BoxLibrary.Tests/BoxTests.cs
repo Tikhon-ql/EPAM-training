@@ -16,7 +16,7 @@ namespace BoxLibrary.Tests
     public class BoxTests
     {
         /// <summary>
-        /// Проверка метода добавления фигур
+        /// Checking add figure method
         /// </summary>
         [TestMethod]
         public void Add_PaperCircle_15_FilmRectangle_15_12_PaperTrianlge_10_24_20()
@@ -58,7 +58,7 @@ namespace BoxLibrary.Tests
             Assert.IsFalse(actual4);
         }
         /// <summary>
-        /// Метод просмотра определенной фигуры
+        /// Checking figure view method
         /// </summary>
         [TestMethod]
         public void See_PaperRectangle_17_15_Green()
@@ -74,7 +74,7 @@ namespace BoxLibrary.Tests
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// Проверка метода получения фигуры с удалением
+        /// Checking figure pop method
         /// </summary>
         [TestMethod]
         public void Pop_FilmCircle_10()
@@ -91,7 +91,7 @@ namespace BoxLibrary.Tests
             Assert.AreEqual(2, box.Count);
         }
         /// <summary>
-        /// Проверка метода замены фигуры
+        /// Checking figure replace method
         /// </summary>
         [TestMethod]
         public void Replace_FilmCircle_10_Rectangle_15_17_Green()
@@ -107,7 +107,7 @@ namespace BoxLibrary.Tests
             Assert.IsTrue(actual);
         }
         /// <summary>
-        /// Метод проверки поиска фигуры
+        /// Checking figure search method
         /// </summary>
         [TestMethod]
         public void Seacrhe_FilmSquare_10()
@@ -123,7 +123,7 @@ namespace BoxLibrary.Tests
             Assert.AreEqual(expected,actual);
         }
         /// <summary>
-        /// Проверка метода получения списка текущих фигур
+        /// Checking all figure view method
         /// </summary>
         [TestMethod]
         public void GetCurrentFigures_Box_FilmCircle_10_FilmTriangle_10_15_10_PaperSquare_10()
@@ -142,7 +142,7 @@ namespace BoxLibrary.Tests
             CollectionAssert.AreNotEqual(notexpected, actual);
         }
         /// <summary>
-        /// Проверка метода получения суммарного перимектра
+        /// Checking get sun perimetr method
         /// </summary>
         [TestMethod]
         public void GetSumP_Box_FilmCircle_10_PaperSquare_10()
@@ -156,7 +156,7 @@ namespace BoxLibrary.Tests
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// Проверка метода получения суммарной площади
+        ///  Checking get sun square method
         /// </summary>
         [TestMethod]
         public void GetSumS_Box_FilmTriangle_10_12_15_PaperSquare_10()
@@ -170,7 +170,7 @@ namespace BoxLibrary.Tests
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// Проверка метода получения всех кругов
+        /// Checking get circles method
         /// </summary>
         [TestMethod]
         public void GetAllCircles_Box_PaperCircle_17_FilmSquare_10_FilmCircle_12_PaperRectangle_10_15()
@@ -184,7 +184,7 @@ namespace BoxLibrary.Tests
             CollectionAssert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// Метод получения пленочных фигур
+        /// Checking get film figures method
         /// </summary>
         [TestMethod]
         public void GetAllFilmFigures_Box_PaperCircle_10_FilmSquare_10_FilmCircle_10_PaperRectangle_10_15()
@@ -199,13 +199,13 @@ namespace BoxLibrary.Tests
             CollectionAssert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// Проверка метода сохранения данных в xml файл через XmlWriter
+        /// Checking save to xml file through XmlWriter
         /// </summary>
         [TestMethod]
-        public void SaveToXmlFile_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        public void SaveToXmlFile_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
         {
             //arrange
-            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10,12,15,Colors.Red), new PaperRectangle(10, 20,Colors.Blue));
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10,12,15,Colors.Red), new PaperRectangle(10, 20,Colors.Blue));
             string filename = "test.xml";
             string badfilename = "";
             string nullfilename = null;
@@ -218,13 +218,13 @@ namespace BoxLibrary.Tests
             Assert.IsFalse(box.SaveFiguresXmlWriter(nullfilename));
         }
         /// <summary>
-        /// Проверка метода сохранения пленочных фигур в xml файл через XmlWriter
+        /// Checking save to xml file film figures through XmlWriter
         /// </summary>
         [TestMethod]
-        public void SaveToXmlFileFilmFigures_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        public void SaveToXmlFileFilmFigures_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
         {
             //arrange
-            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new FilmRectangle(10, 20));
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new FilmRectangle(10, 20));
 
             string filename = "filmfigures.xml";
             //act
@@ -234,13 +234,13 @@ namespace BoxLibrary.Tests
             Assert.IsTrue(actual);
         }
         /// <summary>
-        /// Проверка метода сохранения бумажных фигур в xml файл через XmlWriter
+        /// Checking save to xml file paper figures through XmlWriter
         /// </summary>
         [TestMethod]
-        public void SaveToXmlFilePaperFigures_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        public void SaveToXmlFilePaperFigures_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
         {
             //arrange
-            Box box = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20,Colors.Green));
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20,Colors.Green));
 
             string filename = "paperfigures.xml";
             //act
@@ -250,23 +250,131 @@ namespace BoxLibrary.Tests
             Assert.IsTrue(actual);
         }
         /// <summary>
-        /// Проверка метода получения фигур из xml файла через XmlReader
+        /// Checking load all figures from xml file  method through XmlReader
         /// </summary>
         [TestMethod]
-        public void LoadFromXmlFile_Box_PaperCircle_10_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        public void LoadFromXmlFile_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
         {
             //arrange
             Box box = new Box();
-            Box expected = new Box(new PaperCircle(10), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
+            Box expected = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
 
             string filename = "test.xml";
             //act
             bool actual = box.LoadFiguresXmlReader(filename);
 
             //assert
-            MessageBox.Show(box.Count.ToString());
+           
             Assert.IsTrue(actual);
             CollectionAssert.AreEqual(expected.GetCurrentFigures(), box.GetCurrentFigures());
+        }
+        /// <summary>
+        /// Checking load all figures from xml file method through StreamReader
+        /// </summary>
+        [TestMethod]
+        public void LoadFromXmlThroughStreamReaderFile_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box();
+            Box expected = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
+
+            string filename = "test.xml";
+            //act
+            bool actual = box.LoadFiguresStreamReader(filename);
+            //assert
+            Assert.IsTrue(actual);
+            CollectionAssert.AreEqual(expected.GetCurrentFigures(), box.GetCurrentFigures());
+        }
+        /// <summary>
+        /// Checking the mutual work of saving / loading data from xml file XmlWriter and StreamReader
+        /// </summary>
+        [TestMethod]
+        public void Save_Box_Through_XmlWriter_And_Load_Box_Throung_StreamReader()
+        {
+            //arrange
+            Box box = new Box();
+            Box expected = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
+
+            string filename = "test.xml";
+            //act
+            bool actualSave = expected.SaveFiguresXmlWriter(filename);
+            bool actualLoad = box.LoadFiguresStreamReader(filename);
+            //assert
+            Assert.IsTrue(actualSave);
+            Assert.IsTrue(actualLoad);
+            CollectionAssert.AreEqual(expected.GetCurrentFigures(), box.GetCurrentFigures());
+        }
+        /// <summary>
+        /// Checking the mutual work of saving/loading data from xml file StreamWriter and XmlReader
+        /// </summary>
+        [TestMethod]
+        public void Save_Box_Through_StreamWriter_And_Load_Box_Throung_XmlReader()
+        {
+            //arrange
+            Box box = new Box();
+            Box expected = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
+
+            string filename = "testStreamWriter.xml";
+            //act
+            bool actualSave = expected.SaveFiguresStreamWriter(filename);
+            bool actualLoad = box.LoadFiguresXmlReader(filename);
+            //assert
+            Assert.IsTrue(actualSave);
+            Assert.IsTrue(actualLoad);
+            CollectionAssert.AreEqual(expected.GetCurrentFigures(), box.GetCurrentFigures());
+        }
+
+        /// <summary>
+        /// Checking save to xml file through StreamWriter
+        /// </summary>
+        [TestMethod]
+        public void SaveToXmlFileStreamWriter_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Blue));
+            string filename = "testStreamWriter.xml";
+            string badfilename = "";
+            string nullfilename = null;
+            //act
+            bool actual = box.SaveFiguresStreamWriter(filename);
+
+            //assert
+            Assert.IsTrue(actual);
+            Assert.IsFalse(box.SaveFiguresStreamWriter(badfilename));
+            Assert.IsFalse(box.SaveFiguresStreamWriter(nullfilename));
+        }
+
+        /// <summary>
+        /// Checking save to xml file film figures through StreamWriter
+        /// </summary>
+        [TestMethod]
+        public void SaveToXmlFileThroughStreamWriterFilmFigures_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new FilmRectangle(10, 20));
+
+            string filename = "filmfiguresStreamWriter.xml";
+            //act
+            bool actual = box.SaveFiguresStreamWriter(filename, SaveType.FilmFigures);
+
+            //assert
+            Assert.IsTrue(actual);
+        }
+        /// <summary>
+        /// Checking save to xml file paper figures through StreamWriter
+        /// </summary>
+        [TestMethod]
+        public void SaveToXmlFileThroughStreamWriterPaperFigures_Box_PaperCircle_12_FilmSquare_10_PaperTriangle_10_12_15_Red_PaperRectangle_10_20_Blue()
+        {
+            //arrange
+            Box box = new Box(new PaperCircle(12), new FilmSquare(10), new PaperTriangle(10, 12, 15, Colors.Red), new PaperRectangle(10, 20, Colors.Green));
+
+            string filename = "paperfiguresStreamWriter.xml";
+            //act
+            bool actual = box.SaveFiguresStreamWriter(filename, SaveType.PaperFigures);
+
+            //assert
+            Assert.IsTrue(actual);
         }
     }
 }

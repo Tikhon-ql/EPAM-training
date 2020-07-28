@@ -32,18 +32,11 @@ namespace FiguresLibrary.Models.PaperFigures
         {
 
         }
-        /// <summary>
-        /// Метод нахождения периметра круга
-        /// </summary>
-        /// <returns></returns>
         public override double P()
         {
             return Math.Round(2 * Math.PI * R,2);
         }
-        /// <summary>
-        /// Метод нахождения площади круга
-        /// </summary>
-        /// <returns></returns>
+
         public override double S()
         {
             return Math.Round(Math.PI * R * R,2);

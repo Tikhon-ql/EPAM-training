@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ColorsLibrary
 {
     /// <summary>
-    /// Перечисление цветов
+    /// Colors enumeration
     /// </summary>
     public enum Colors
     {

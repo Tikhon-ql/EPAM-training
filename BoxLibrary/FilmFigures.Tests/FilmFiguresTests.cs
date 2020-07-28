@@ -12,7 +12,7 @@ namespace FilmFigures.Tests
     public class FilmFiguresTests
     {
         /// <summary>
-        /// Проверка понструктора для вырезания одной фигуры из другой
+        /// Checking a constructor to cut one figure from another
         /// </summary>
         [TestMethod]
         public void Cut_FilmCircle_5_from_FilmRectangle_10_20_and_FilmTringle_30_50_30_from_FilmSquare_10()
@@ -29,7 +29,7 @@ namespace FilmFigures.Tests
             Assert.ThrowsException<CannotCutableException>(() => triangle = new FilmTriangle(square, 30, 50, 30));
         }
         /// <summary>
-        /// Проверка метода получения данных для атрибутов xml
+        ///  Checking a method to get data fom xml attributes 
         /// </summary>
         [TestMethod]
         public void AttributeXml_FilmCircle_10_FilmRectanlge_10_20()

@@ -26,9 +26,9 @@ namespace FiguresLibrary.Models.FilmFigures
         {
 
         }
-        // длинна квадрата
+        // height of rectangle
         public double Height { get; set; } = 0;
-        // ширина квадрата
+        // width of rectangle
         public double Width { get; set; } = 0;
 
         public override bool Equals(object obj)

@@ -16,10 +16,10 @@ namespace FiguresLibrary.Models.FilmFigures
             R = r;
         }
         /// <summary>
-        /// Конструктор для вырезания из другой фигуры
+        /// Constructor to cut from another figure
         /// </summary>
-        /// <param name="fig">Фигура, из которой вырезаем</param>
-        /// <param name="r">радиус</param>
+        /// <param name="fig">The figure from we cut</param>
+        /// <param name="r">radius</param>
         public FilmCircle(FilmFigure fig, int r)
         {
             R = r;
@@ -30,18 +30,10 @@ namespace FiguresLibrary.Models.FilmFigures
         {
 
         }
-        /// <summary>
-        /// Метод нахождения периметра круга
-        /// </summary>
-        /// <returns></returns>
         public override double P()
         {
             return Math.Round(2 * Math.PI * R, 2);
         }
-        /// <summary>
-        /// Метод нахождения площади круга
-        /// </summary>
-        /// <returns></returns>
         public override double S()
         {
             return Math.Round(Math.PI * R * R,2);
