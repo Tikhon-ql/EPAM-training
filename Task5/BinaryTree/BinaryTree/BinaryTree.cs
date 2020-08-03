@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TCPIPLibrary
+namespace BinaryTree
 {
-    public class Class1
+    public class BinaryTree
     {
+        public TreeNode Root { get; set; }
+
+        public bool AddTreeNode(TreeNode)
     }
 }
